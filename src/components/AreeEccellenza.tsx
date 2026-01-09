@@ -69,7 +69,7 @@ function ServiceCard({ service, index, isInView }: { service: Service; index: nu
           <div className="mb-4 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
             {service.icon}
           </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl font-bold text-black mb-4">
             {service.title}
           </h3>
           <motion.div
@@ -104,7 +104,7 @@ export function AreeEccellenza() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-section-title-large mb-4">
             Aree di Eccellenza
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto font-geist-sans">

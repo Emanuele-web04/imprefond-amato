@@ -82,7 +82,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="text-center"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-white drop-shadow-2xl">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter text-white drop-shadow-2xl">
             Migliorando l&apos;Italia costruendo
           </h2>
         </motion.div>

@@ -54,7 +54,7 @@ export function NewsBlog() {
       ctaLink="/news"
       content={
         <>
-          <p className="mb-6 text-lg md:text-xl text-gray-700 font-geist-sans">
+          <p className="mb-6 text-description">
             Resta aggiornato sulle nostre attività, progetti e innovazioni nel
             settore delle fondazioni speciali.
           </p>
@@ -73,7 +73,7 @@ export function NewsBlog() {
                       <span>{item.location}</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-1.5">
+                  <h3 className="text-lg font-medium text-black mb-1.5">
                     {item.title}
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed font-geist-sans">

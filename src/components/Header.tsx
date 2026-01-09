@@ -26,8 +26,8 @@ export function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <Link href="#home" className="bg-blue-950 fixed px-4 py-1.5 shadow-2xl">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter text-white">
+          <Link href="#home" className="bg-blue-950 absolute px-4 py-1.5 shadow-2xl">
+            <h1 className="text-lg md:text-2xl lg:text-3xl font-bold tracking-tighter text-white">
               Imprefond
             </h1>
           </Link>

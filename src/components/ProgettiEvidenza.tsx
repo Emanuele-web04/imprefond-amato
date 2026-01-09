@@ -64,7 +64,7 @@ function ProjectCard({
 
         {/* Label sempre visibile */}
         <div className="absolute top-4 left-4">
-          <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-gray-900">
+          <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-black">
             {project.category}
           </span>
         </div>
@@ -123,7 +123,7 @@ export function ProgettiEvidenza() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-section-title-large mb-4">
             Progetti in Evidenza
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto font-geist-sans">

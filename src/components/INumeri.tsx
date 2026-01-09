@@ -77,7 +77,7 @@ function StatCard({ value, label, suffix, prefix, isInView }: StatCardProps) {
       transition={{ duration: 0.6 }}
       className="text-center"
     >
-      <div className="text-3xl md:text-5xl font-bold text-gray-900 mb-2">
+      <div className="text-3xl md:text-5xl font-bold text-black mb-2">
         <Counter
           end={value}
           suffix={suffix}
@@ -105,9 +105,7 @@ export function INumeri() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            I Numeri
-          </h2>
+          <h2 className="text-section-title-large mb-4">I Numeri</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto font-geist-sans">
             La prova sociale della nostra esperienza e affidabilità nel settore
             delle fondazioni speciali

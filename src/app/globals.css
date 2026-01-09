@@ -91,7 +91,7 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.87 0.00 0);
+  --primary: oklch(0.87 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
@@ -129,8 +129,10 @@
   }
   .maplibregl-popup-content {
     @apply bg-transparent! shadow-none! p-0! rounded-none!;
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
   }
   .maplibregl-popup-tip {
+    @apply hidden!;
     @apply hidden!;
   }
 }
@@ -142,4 +144,31 @@ html {
 
 body {
   font-family: var(--font-space-grotesk);
+}
+
+@layer utilities {
+  /* Titolo principale - per h1, h2 principali */
+  .text-title {
+    @apply text-2xl md:text-3xl lg:text-4xl font-medium text-black;
+  }
+
+  /* Sottotitolo - per titoli di sezione più piccoli */
+  .text-subtitle {
+    @apply text-lg md:text-xl font-medium text-black;
+  }
+
+  /* Descrizione - per paragrafi descrittivi */
+  .text-description {
+    @apply text-base md:text-lg text-gray-700 font-geist-sans;
+  }
+
+  /* Titolo sezione - per titoli di sezione standard */
+  .text-section-title {
+    @apply text-3xl md:text-4xl font-medium text-black;
+  }
+
+  /* Titolo sezione grande - per titoli di sezione principali */
+  .text-section-title-large {
+    @apply text-4xl md:text-5xl font-bold text-black;
+  }
 }

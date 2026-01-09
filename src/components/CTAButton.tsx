@@ -19,7 +19,7 @@ export function CTAButton({ text, href, className = "" }: CTAButtonProps) {
     >
       <Link
         href={href}
-        className={`inline-flex items-center gap-3 group text-gray-900 hover:text-blue-950 transition-colors duration-200 ${className}`}
+        className={`inline-flex items-center gap-3 group text-black hover:text-blue-950 transition-colors duration-200 ${className}`}
       >
         <motion.span
           className="text-base md:text-lg font-medium relative"

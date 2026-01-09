@@ -1,0 +1,124 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion } from "motion/react";
+import { usePathname } from "next/navigation";
+
+interface NavItem {
+  label: string;
+  href: string;
+  id: string;
+}
+
+const navItems: NavItem[] = [
+  { label: "Chi Siamo", href: "/storia#chi-siamo", id: "chi-siamo" },
+  { label: "Cultura", href: "/storia#cultura", id: "cultura" },
+  { label: "Storia", href: "/storia#storia", id: "storia" },
+];
+
+export function SidebarNav() {
+  const pathname = usePathname();
+  const [activeId, setActiveId] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.location.hash.slice(1) || "chi-siamo";
+    }
+    return "chi-siamo";
+  });
+
+  // Scroll to section when hash changes
+  useEffect(() => {
+    const scrollToSection = (hash: string) => {
+      if (!hash) return;
+
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          const headerOffset = 100; // Offset for fixed header if needed
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+    };
+
+    const handleHashChange = () => {
+      const newHash = window.location.hash.slice(1);
+      setActiveId(newHash || "chi-siamo");
+      scrollToSection(newHash);
+    };
+
+    // Handle initial hash on page load
+    if (typeof window !== "undefined") {
+      const initialHash = window.location.hash.slice(1);
+      if (initialHash) {
+        scrollToSection(initialHash);
+      }
+    }
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, [pathname]);
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      // Update URL hash without triggering scroll
+      window.history.pushState(null, "", `#${id}`);
+      setActiveId(id);
+    }
+  };
+
+  return (
+    <aside className="lg:col-span-1">
+      <nav className="sticky top-24 space-y-4">
+        {navItems.map((item, index) => {
+          const isActive = activeId === item.id;
+          return (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
+            >
+              <a
+                href={item.href}
+                onClick={(e) => handleLinkClick(e, item.id)}
+                className={`block py-0 transition-colors pl-4 cursor-pointer ${
+                  isActive
+                    ? "text-gray-700 font-medium border-l-2 border-blue-950"
+                    : "text-gray-600 hover:text-blue-950"
+                }`}
+              >
+                {item.label}
+              </a>
+            </motion.div>
+          );
+        })}
+      </nav>
+    </aside>
+  );
+}

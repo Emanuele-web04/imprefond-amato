@@ -58,12 +58,8 @@ export function SplitSection({
         }`}
       >
         <div className="max-w-2xl px-6 md:px-12 py-12 md:py-16 flex flex-col items-start">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-            {title}
-          </h2>
-          <div className="text-base md:text-lg text-gray-700 leading-relaxed mb-8">
-            {content}
-          </div>
+          <h2 className="text-title mb-6">{title}</h2>
+          <div className="text-description mb-8">{content}</div>
 
           {/* CTA */}
           {ctaText && ctaLink && (

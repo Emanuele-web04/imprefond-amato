@@ -23,9 +23,9 @@ export function SicurezzaInnovazione() {
       ctaLink="/#aree-eccellenza"
       content={
         <>
-          <p className="mb-6 text-lg md:text-xl text-gray-700 font-geist-sans">
-            Il settore delle fondazioni è ad alto rischio. Sicurezza e innovazione 
-            sono al centro di tutto ciò che facciamo.
+          <p className="mb-6 text-description">
+            Il settore delle fondazioni è ad alto rischio. Sicurezza e
+            innovazione sono al centro di tutto ciò che facciamo.
           </p>
 
           <div className="space-y-5">
@@ -34,12 +34,12 @@ export function SicurezzaInnovazione() {
                 <TbTruck className="w-5 h-5 text-blue-900" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                <h3 className="text-lg font-medium text-black mb-1">
                   Parco Macchine Moderno
                 </h3>
                 <p className="text-sm text-gray-600 font-geist-sans">
-                  Macchinari all&apos;avanguardia per efficienza, precisione e sicurezza. 
-                  Simbolo di innovazione tecnologica nel settore.
+                  Macchinari all&apos;avanguardia per efficienza, precisione e
+                  sicurezza. Simbolo di innovazione tecnologica nel settore.
                 </p>
               </div>
             </div>
@@ -49,12 +49,13 @@ export function SicurezzaInnovazione() {
                 <FaShieldAlt className="w-5 h-5 text-blue-900" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                <h3 className="text-lg font-medium text-black mb-1">
                   Sicurezza sul Lavoro
                 </h3>
                 <p className="text-sm text-gray-600 font-geist-sans">
-                  Impegno per zero infortuni. Formazione continua, procedure rigorose 
-                  e attrezzature certificate garantiscono un ambiente sicuro.
+                  Impegno per zero infortuni. Formazione continua, procedure
+                  rigorose e attrezzature certificate garantiscono un ambiente
+                  sicuro.
                 </p>
               </div>
             </div>
@@ -64,12 +65,12 @@ export function SicurezzaInnovazione() {
                 <FaLeaf className="w-5 h-5 text-blue-900" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                <h3 className="text-lg font-medium text-black mb-1">
                   Sostenibilità Ambientale
                 </h3>
                 <p className="text-sm text-gray-600 font-geist-sans">
-                  Tecniche innovative, materiali sostenibili e processi ottimizzati 
-                  che rispettano l&apos;ecosistema circostante.
+                  Tecniche innovative, materiali sostenibili e processi
+                  ottimizzati che rispettano l&apos;ecosistema circostante.
                 </p>
               </div>
             </div>
