@@ -108,14 +108,14 @@ function NewsArticle({ item, index }: NewsArticleProps) {
     <article
       id={`news-${index}`}
       ref={ref}
-      className="relative flex flex-col min-h-screen w-full mb-16"
+      className="relative flex flex-col min-h-screen w-full mb-10 sm:mb-12 md:mb-14 lg:mb-16"
     >
       {/* Immagine full height */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative w-full h-[60vh] md:h-[70vh]"
+        className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[70vh]"
       >
         <img
           src={item.image}
@@ -129,20 +129,20 @@ function NewsArticle({ item, index }: NewsArticleProps) {
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        className="relative w-full bg-white py-8"
+        className="relative w-full bg-white py-6 sm:py-7 md:py-8"
       >
-        <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-500">
-          <div className="flex items-center gap-2">
-            <FaCalendar className="w-4 h-4" />
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-gray-500">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <FaCalendar className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>{item.date}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <FaMapMarkerAlt className="w-4 h-4" />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <FaMapMarkerAlt className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>{item.location}</span>
           </div>
         </div>
         
-        <h2 className="text-title mb-6">{item.title}</h2>
+        <h2 className="text-title mb-4 sm:mb-5 md:mb-6">{item.title}</h2>
         
         <p className="text-description leading-relaxed">{item.fullContent}</p>
       </motion.div>

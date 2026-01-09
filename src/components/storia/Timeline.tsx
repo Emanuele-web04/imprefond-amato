@@ -93,9 +93,9 @@ export function Timeline() {
   });
 
   return (
-    <div id="timeline" ref={ref} className="mb-12">
+    <div id="timeline" ref={ref} className="mb-8 sm:mb-10 md:mb-12">
       <motion.h2
-        className="text-section-title mb-12"
+        className="text-section-title mb-8 sm:mb-10 md:mb-12"
         initial={{ opacity: 0, x: -20 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -105,10 +105,10 @@ export function Timeline() {
 
       <div className="relative">
         {/* Linea verticale */}
-        <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+        <div className="absolute left-4 sm:left-5 md:left-6 lg:left-8 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
         {/* Eventi */}
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-10 md:space-y-12">
           {events.map((event, index) => (
             <motion.div
               key={event.year}
@@ -120,19 +120,19 @@ export function Timeline() {
                 delay: index * 0.1,
                 ease: "easeOut",
               }}
-              className="relative pl-20 md:pl-28"
+              className="relative pl-12 sm:pl-16 md:pl-20 lg:pl-28"
             >
               {/* Punto sulla timeline - perfettamente centrato */}
-              <div className="absolute left-6 md:left-[33px] top-0- transform -translate-x-1/2">
-                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-blue-950 border-4 border-gray-300  flex items-center justify-center relative z-10">
-                  <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-white"></div>
+              <div className="absolute left-4 sm:left-5 md:left-6 lg:left-[33px] top-0 transform -translate-x-1/2">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 rounded-full bg-blue-950 border-2 sm:border-3 md:border-4 border-gray-300 flex items-center justify-center relative z-10">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 rounded-full bg-white"></div>
                 </div>
               </div>
 
               {/* Contenuto - articolo compatto */}
               <div className="bg-white overflow-hidden">
                 {/* Immagine banner */}
-                <div className="w-full h-48 md:h-104 mb-4 rounded-lg overflow-hidden">
+                <div className="w-full h-40 sm:h-48 md:h-56 lg:h-64 mb-3 sm:mb-4 rounded-lg overflow-hidden">
                   <img
                     src={event.image}
                     alt={event.title}
@@ -142,15 +142,15 @@ export function Timeline() {
 
                 {/* Testo */}
                 <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xl md:text-2xl font-bold text-blue-950">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
+                    <span className="text-lg sm:text-xl md:text-2xl font-bold text-blue-950">
                       {event.year}
                     </span>
                   </div>
-                  <h3 className="text-lg md:text-xl font-medium text-black mb-2">
+                  <h3 className="text-base sm:text-lg md:text-xl font-medium text-black mb-1.5 sm:mb-2">
                     {event.title}
                   </h3>
-                  <p className="text-sm md:text-base text-gray-700 font-geist-sans leading-relaxed">
+                  <p className="text-xs sm:text-sm md:text-base text-gray-700 font-geist-sans leading-relaxed">
                     {event.description}
                   </p>
                 </div>

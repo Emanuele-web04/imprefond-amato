@@ -35,13 +35,13 @@ export function PageLayout({
 
       {/* Main Content Section */}
       <motion.section
-        className="py-16 bg-white"
+        className="py-8 sm:py-10 md:py-12 lg:py-16 bg-white"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="flex flex-col lg:grid lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12">
             <SidebarNav navItems={navItems} defaultActiveId={defaultActiveId} />
             <motion.div
               className="lg:col-span-3"

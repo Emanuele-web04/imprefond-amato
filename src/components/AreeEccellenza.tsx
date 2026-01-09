@@ -62,26 +62,26 @@ function ServiceCard({ service, index, isInView }: { service: Service; index: nu
       transition={{ duration: 0.6, delay: index * 0.1 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative group cursor-pointer"
+      className="relative group cursor-pointer px-2"
     >
-      <div className="relative h-full bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+      <div className="relative h-full bg-white rounded-lg shadow-lg p-6 sm:p-7 md:p-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
         <div className="flex flex-col items-center text-center">
-          <div className="mb-4 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+          <div className="mb-3 sm:mb-4 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
             {service.icon}
           </div>
-          <h3 className="text-xl font-bold text-black mb-4">
+          <h3 className="text-lg sm:text-xl font-bold text-black mb-3 sm:mb-4">
             {service.title}
           </h3>
           <motion.div
             initial={{ height: 0, opacity: 0 }}
-            animate={{ 
+            animate={{
               height: isHovered ? "auto" : 0,
               opacity: isHovered ? 1 : 0
             }}
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="text-gray-600 text-sm leading-relaxed pt-2 font-geist-sans">
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed pt-2 font-geist-sans">
               {service.description}
             </p>
           </motion.div>
@@ -96,23 +96,23 @@ export function AreeEccellenza() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="aree-eccellenza" ref={ref} className="relative w-full py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="aree-eccellenza" ref={ref} className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16"
         >
-          <h2 className="text-section-title-large mb-4">
+          <h2 className="text-section-title-large mb-3 sm:mb-4 px-4">
             Aree di Eccellenza
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-geist-sans">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-geist-sans px-4">
             Servizi specializzati per ogni esigenza di fondazione e consolidamento
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 md:gap-8">
           {services.map((service, index) => (
             <ServiceCard
               key={service.title}

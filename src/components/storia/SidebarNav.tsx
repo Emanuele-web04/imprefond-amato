@@ -94,34 +94,37 @@ export function SidebarNav({ navItems, defaultActiveId }: SidebarNavProps) {
 
   return (
     <aside className="lg:col-span-1">
-      <nav className="sticky top-24 space-y-4">
-        {navItems.map((item, index) => {
-          const isActive = activeId === item.id;
-          return (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
-            >
-              <a
-                href={item.href}
-                onClick={(e) => handleLinkClick(e, item.id)}
-                className={`block py-0 transition-colors pl-4 cursor-pointer ${
-                  isActive
-                    ? "text-gray-700 font-medium border-l-2 border-blue-950"
-                    : "text-gray-600 hover:text-blue-950"
-                }`}
+      <nav className="lg:sticky lg:top-24 space-y-3 sm:space-y-4 mb-8 lg:mb-0 overflow-x-auto lg:overflow-visible">
+        <div className="flex lg:flex-col gap-3 sm:gap-4 lg:space-y-0 pb-4 lg:pb-0">
+          {navItems.map((item, index) => {
+            const isActive = activeId === item.id;
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+                className="flex-shrink-0 lg:flex-shrink"
               >
-                {item.label}
-              </a>
-            </motion.div>
-          );
-        })}
+                <a
+                  href={item.href}
+                  onClick={(e) => handleLinkClick(e, item.id)}
+                  className={`block py-1 sm:py-2 lg:py-0 px-3 lg:px-0 transition-colors lg:pl-4 cursor-pointer whitespace-nowrap lg:whitespace-normal rounded-md lg:rounded-none text-sm sm:text-base ${
+                    isActive
+                      ? "text-gray-700 font-medium lg:border-l-2 border-blue-950 bg-blue-50 lg:bg-transparent"
+                      : "text-gray-600 hover:text-blue-950 hover:bg-gray-50 lg:hover:bg-transparent"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </motion.div>
+            );
+          })}
+        </div>
       </nav>
     </aside>
   );

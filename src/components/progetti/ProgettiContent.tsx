@@ -72,13 +72,13 @@ export function ProgettiContent() {
 
       <ItalyMap />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12">
         {projects.map((project, index) => (
           <div
             key={index}
             className="relative cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow"
           >
-            <div className="relative aspect-12/16">
+            <div className="relative aspect-[3/4]">
               <img
                 src={project.image}
                 alt={project.title}
@@ -86,25 +86,27 @@ export function ProgettiContent() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-6">
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6">
                 <div className="text-white">
-                  <span className="text-sm font-semibold text-blue-300 mb-2 block">
+                  <span className="text-xs sm:text-sm font-semibold text-blue-300 mb-1.5 sm:mb-2 block">
                     {project.category}
                   </span>
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-sm text-gray-200 mb-4 font-geist-sans">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1.5 sm:mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-200 mb-3 sm:mb-4 font-geist-sans line-clamp-3">
                     {project.description}
                   </p>
-                  <button className="flex items-center gap-2 text-white font-semibold hover:text-blue-300 transition-colors">
+                  <button className="flex items-center gap-1.5 sm:gap-2 text-white font-semibold hover:text-blue-300 transition-colors text-xs sm:text-sm">
                     Vedi dettagli
-                    <FaArrowRight className="w-4 h-4" />
+                    <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                   </button>
                 </div>
               </div>
 
               {/* Label sempre visibile */}
-              <div className="absolute top-4 left-4">
-                <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-black">
+              <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
+                <span className="bg-white/90 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-semibold text-black">
                   {project.category}
                 </span>
               </div>

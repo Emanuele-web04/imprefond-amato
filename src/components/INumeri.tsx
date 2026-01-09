@@ -75,9 +75,9 @@ function StatCard({ value, label, suffix, prefix, isInView }: StatCardProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
       transition={{ duration: 0.6 }}
-      className="text-center"
+      className="text-center px-4"
     >
-      <div className="text-3xl md:text-5xl font-bold text-black mb-2">
+      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-2">
         <Counter
           end={value}
           suffix={suffix}
@@ -85,7 +85,7 @@ function StatCard({ value, label, suffix, prefix, isInView }: StatCardProps) {
           isInView={isInView}
         />
       </div>
-      <div className="text-lg md:text-xl text-gray-600 font-medium font-geist-sans">
+      <div className="text-base sm:text-lg md:text-xl text-gray-600 font-medium font-geist-sans">
         {label}
       </div>
     </motion.div>
