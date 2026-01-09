@@ -3,7 +3,7 @@
 import { Header } from "@/components/Header";
 import { PageHero } from "./PageHero";
 import { Breadcrumbs } from "../storia/Breadcrumbs";
-import { SidebarNav } from "../storia/SidebarNav";
+import { SidebarNav, NavItem } from "../storia/SidebarNav";
 import { Risultati } from "../storia/Risultati";
 import { motion } from "motion/react";
 
@@ -11,6 +11,8 @@ interface PageLayoutProps {
   title: string;
   heroImage: string;
   breadcrumbItems?: { label: string; href?: string }[];
+  navItems: NavItem[];
+  defaultActiveId?: string;
   children: React.ReactNode;
   showRisultati?: boolean;
 }
@@ -19,6 +21,8 @@ export function PageLayout({
   title,
   heroImage,
   breadcrumbItems = [],
+  navItems,
+  defaultActiveId,
   children,
   showRisultati = true,
 }: PageLayoutProps) {
@@ -38,7 +42,7 @@ export function PageLayout({
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-            <SidebarNav />
+            <SidebarNav navItems={navItems} defaultActiveId={defaultActiveId} />
             <motion.div
               className="lg:col-span-3"
               initial={{ opacity: 0, x: 20 }}

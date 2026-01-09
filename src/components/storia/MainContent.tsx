@@ -1,13 +1,13 @@
 import { ChiSiamo } from "./ChiSiamo";
 import { Cultura } from "./Cultura";
-import { StoriaContent } from "./StoriaContent";
+import { Timeline } from "./Timeline";
 
 export function MainContent() {
   return (
     <>
       <ChiSiamo />
       <Cultura />
-      <StoriaContent />
+      <Timeline />
     </>
   );
 }

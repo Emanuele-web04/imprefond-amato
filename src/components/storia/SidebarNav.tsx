@@ -4,25 +4,29 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 
-interface NavItem {
+export interface NavItem {
   label: string;
   href: string;
   id: string;
 }
 
-const navItems: NavItem[] = [
-  { label: "Chi Siamo", href: "/storia#chi-siamo", id: "chi-siamo" },
-  { label: "Cultura", href: "/storia#cultura", id: "cultura" },
-  { label: "Storia", href: "/storia#storia", id: "storia" },
-];
+interface SidebarNavProps {
+  navItems: NavItem[];
+  defaultActiveId?: string;
+}
 
-export function SidebarNav() {
+export function SidebarNav({ navItems, defaultActiveId }: SidebarNavProps) {
   const pathname = usePathname();
   const [activeId, setActiveId] = useState(() => {
     if (typeof window !== "undefined") {
-      return window.location.hash.slice(1) || "chi-siamo";
+      return (
+        window.location.hash.slice(1) ||
+        defaultActiveId ||
+        navItems[0]?.id ||
+        ""
+      );
     }
-    return "chi-siamo";
+    return defaultActiveId || navItems[0]?.id || "";
   });
 
   // Scroll to section when hash changes
@@ -49,7 +53,7 @@ export function SidebarNav() {
 
     const handleHashChange = () => {
       const newHash = window.location.hash.slice(1);
-      setActiveId(newHash || "chi-siamo");
+      setActiveId(newHash || defaultActiveId || navItems[0]?.id || "");
       scrollToSection(newHash);
     };
 
@@ -63,7 +67,7 @@ export function SidebarNav() {
 
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [pathname]);
+  }, [pathname, defaultActiveId, navItems]);
 
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
