@@ -8,7 +8,8 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 
-const geoUrl = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson";
+const geoUrl =
+  "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson";
 
 interface CityMarker {
   name: string;
@@ -81,7 +82,10 @@ export default function ItalyMap() {
                     strokeWidth={isItaly ? 1.5 : 0.5}
                     style={{
                       default: { outline: "none" },
-                      hover: { outline: "none", fill: isItaly ? "#c7d2fe" : "#e5e7eb" },
+                      hover: {
+                        outline: "none",
+                        fill: isItaly ? "#c7d2fe" : "#e5e7eb",
+                      },
                       pressed: { outline: "none" },
                     }}
                   />
