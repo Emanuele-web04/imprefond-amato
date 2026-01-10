@@ -1,18 +1,13 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { SplitSection } from "./SplitSection";
 import { CAROUSEL_IMAGES } from "@/utils/carousel";
-import { useMemo } from "react";
-import { FaShieldAlt, FaTruck, FaLeaf } from "react-icons/fa";
+import { FaShieldAlt, FaLeaf } from "react-icons/fa";
 import { TbTruck } from "react-icons/tb";
 
 export function SicurezzaInnovazione() {
-  // Seleziona un'immagine casuale
-  const randomImage = useMemo(() => {
-    const shuffled = [...CAROUSEL_IMAGES].sort(() => 0.5 - Math.random());
-    return `/compressjpeg0-imprefond/${shuffled[0]}`;
-  }, []);
+  // Usa la prima immagine
+  const randomImage = `/compressjpeg0-imprefond/${CAROUSEL_IMAGES[0]}`;
 
   return (
     <SplitSection

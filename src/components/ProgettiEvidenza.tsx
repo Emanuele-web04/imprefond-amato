@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useInView } from "motion/react";
 import { CAROUSEL_IMAGES } from "@/utils/carousel";
 import { useMemo } from "react";
@@ -24,7 +24,6 @@ function ProjectCard({
   index: number;
   isInView: boolean;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
   const isLarge = index % 3 === 0;
 
   return (
@@ -32,8 +31,6 @@ function ProjectCard({
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       className={`relative group cursor-pointer overflow-hidden rounded-lg ${
         isLarge ? "md:row-span-2" : ""
       }`}
@@ -77,10 +74,9 @@ export function ProgettiEvidenza() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Seleziona 9 immagini casuali per i progetti
+  // Seleziona 9 immagini per i progetti (ordine statico)
   const projects = useMemo(() => {
-    const shuffled = [...CAROUSEL_IMAGES].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, 9);
+    const selected = CAROUSEL_IMAGES.slice(0, 9);
 
     const categories = ["Infrastrutture", "Edilizia Civile", "Opere Pubbliche"];
     const titles = [

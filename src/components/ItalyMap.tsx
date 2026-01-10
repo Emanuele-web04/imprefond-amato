@@ -1,12 +1,11 @@
 "use client";
 
-import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import { MapContainer, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
-// We reuse your exact data
 interface CityMarker {
   name: string;
-  coordinates: [number, number]; // [lng, lat] from your code
+  coordinates: [number, number];
   projects: number;
 }
 
@@ -20,47 +19,42 @@ const italianCities: CityMarker[] = [
 ];
 
 export default function ItalyMapLeaflet() {
-  // Leaflet uses [lat, lng], your data is [lng, lat]. 
-  // We swap them in the center and the markers below.
-  const italyCenter: [number, number] = [41.9, 12.49]; 
+  const italyCenter: [number, number] = [41.9, 12.49];
 
   return (
     <div className="w-full mb-12">
       <h3 className="text-xl font-medium text-black mb-4 text-left">
         I Nostri Progetti in Italia
       </h3>
-      
+
       <div className="h-[500px] w-full rounded-xl overflow-hidden border border-slate-200 shadow-sm relative z-0">
-        <MapContainer 
-          center={italyCenter} 
-          zoom={6} 
+        <MapContainer
+          center={italyCenter}
+          zoom={6}
           scrollWheelZoom={false}
           className="h-full w-full bg-[#f8fafc]"
         >
-          {/* Using a clean, light-themed tile layer that looks professional */}
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-            attribution='&copy; CARTO'
+            attribution="&copy; CARTO"
           />
 
           {italianCities.map((city) => (
             <CircleMarker
               key={city.name}
-              // Swap [lng, lat] to [lat, lng]
               center={[city.coordinates[1], city.coordinates[0]]}
               radius={8}
               pathOptions={{
-                fillColor: "#1e3a8a", // Blue-900 (Your brand color)
-                color: "#ffffff",      // White border
+                fillColor: "#1e3a8a",
+                color: "#ffffff",
                 weight: 2,
                 fillOpacity: 0.9,
               }}
             >
-              {/* This replaces your <text> tag with a proper modern label */}
-              <Tooltip 
-                permanent 
-                direction="top" 
-                offset={[0, -10]} 
+              <Tooltip
+                permanent
+                direction="top"
+                offset={[0, -10]}
                 className="bg-transparent border-none shadow-none font-semibold text-zinc-800"
               >
                 {city.name}
@@ -70,7 +64,6 @@ export default function ItalyMapLeaflet() {
         </MapContainer>
       </div>
 
-      {/* Legend - Kept exactly as you had it */}
       <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-gray-600 font-sans">
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 bg-blue-900 rounded-full border-2 border-white shadow-sm"></div>

@@ -1,10 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { SplitSection } from "./SplitSection";
 import { CAROUSEL_IMAGES } from "@/utils/carousel";
 import { motion } from "motion/react";
-import { useMemo } from "react";
 import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 
 interface NewsItem {
@@ -39,11 +37,8 @@ const newsItems: NewsItem[] = [
 ];
 
 export function NewsBlog() {
-  // Seleziona un'immagine casuale
-  const randomImage = useMemo(() => {
-    const shuffled = [...CAROUSEL_IMAGES].sort(() => 0.5 - Math.random());
-    return `/compressjpeg0-imprefond/${shuffled[0]}`;
-  }, []);
+  // Usa la prima immagine
+  const randomImage = `/compressjpeg0-imprefond/${CAROUSEL_IMAGES[2]}`;
 
   return (
     <SplitSection

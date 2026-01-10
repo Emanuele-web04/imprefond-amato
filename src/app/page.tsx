@@ -2,7 +2,6 @@ import { Hero } from "@/components/Hero";
 import { Header } from "@/components/Header";
 import { LaFilosofia } from "@/components/LaFilosofia";
 import { INumeri } from "@/components/INumeri";
-import { AreeEccellenza } from "@/components/AreeEccellenza";
 import { ProgettiEvidenza } from "@/components/ProgettiEvidenza";
 import { SicurezzaInnovazione } from "@/components/SicurezzaInnovazione";
 import { NewsBlog } from "@/components/NewsBlog";

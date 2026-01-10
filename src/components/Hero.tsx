@@ -12,7 +12,10 @@ export function Hero() {
 
   // Genera la configurazione solo sul client dopo l'hydration
   useEffect(() => {
-    setCarouselConfig(generateCarouselConfig());
+    const timer = setTimeout(() => {
+      setCarouselConfig(generateCarouselConfig());
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Mostra un placeholder durante l'hydration

@@ -1,10 +1,21 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
+"use client";
+
 import { ContentSection } from "../shared/ContentSection";
 import { CAROUSEL_IMAGES } from "@/utils/carousel";
-import ItalyMap from "../ItalyMap";
+import dynamic from "next/dynamic";
 import { FaArrowRight } from "react-icons/fa";
+
+const ItalyMap = dynamic(() => import("../ItalyMap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[500px] bg-gray-100 rounded-lg animate-pulse flex items-center justify-center">
+      <p className="text-gray-500">Caricamento mappa...</p>
+    </div>
+  ),
+});
 
 interface Project {
   image: string;
