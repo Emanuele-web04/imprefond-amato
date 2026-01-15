@@ -113,7 +113,7 @@ export function INumeri() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           <StatCard
-            value={40}
+            value={120}
             label="Anni di Esperienza"
             suffix="+"
             isInView={isInView}

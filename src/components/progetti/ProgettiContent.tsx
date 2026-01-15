@@ -4,7 +4,7 @@
 "use client";
 
 import { ContentSection } from "../shared/ContentSection";
-import { CAROUSEL_IMAGES } from "@/utils/carousel";
+import { PROJECT_IMAGES } from "@/utils/carousel";
 import dynamic from "next/dynamic";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -62,7 +62,7 @@ const createProjects = (images: readonly string[]): Project[] => {
 export function ProgettiContent() {
   // Usa ordine statico per evitare hydration mismatch
   // Le immagini saranno sempre nello stesso ordine
-  const projects = createProjects(CAROUSEL_IMAGES);
+  const projects = createProjects(PROJECT_IMAGES);
 
   return (
     <>

@@ -16,6 +16,12 @@ const italianCities: CityMarker[] = [
   { name: "Firenze", coordinates: [11.25, 43.77], projects: 1 },
   { name: "Bologna", coordinates: [11.34, 44.49], projects: 1 },
   { name: "Napoli", coordinates: [14.25, 40.84], projects: 1 },
+  { name: "Jesi", coordinates: [13.24330, 43.50390], projects: 1 },
+  { name: "Ancona", coordinates: [13.40353, 43.59642], projects: 1 },
+  { name: "Pescara", coordinates: [14.20283, 42.45840], projects: 1 },
+  { name: "Cortina", coordinates: [12.13735, 46.53833], projects: 1 },
+  { name: "Genova", coordinates: [8.93386, 44.40726], projects: 1 },
+  { name: "Chianciano", coordinates: [11.81361, 43.04444], projects: 1 },
 ];
 
 export default function ItalyMapLeaflet() {

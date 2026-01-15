@@ -1,5 +1,14 @@
-// Lista di tutte le immagini disponibili
+// Lista delle immagini per il carosello Hero (ultime 5 da cortina-2-2025)
 export const CAROUSEL_IMAGES = [
+  "_DSC4982.jpg",
+  "_DSC4996.jpg",
+  "_DSC4998.jpg",
+  "_DSC4999.jpg",
+  "_DSC5001.jpg",
+] as const;
+
+// Lista delle immagini per progetti e altre sezioni
+export const PROJECT_IMAGES = [
   "_DSC4941-min.jpg",
   "_DSC4942-min.jpg",
   "_DSC4956-min.jpg",
@@ -28,7 +37,7 @@ export const CAROUSEL_CONFIG = {
   imageCount: 5,
   scrollDuration: 2, // secondi per scrollare
   pauseDuration: 3, // secondi di pausa
-  imagePath: "/compressjpeg0-imprefond",
+  imagePath: "/cortina-2-2025",
 } as const;
 
 export interface CarouselAnimation {
@@ -103,10 +112,8 @@ export function calculateCarouselAnimation(
  * Genera la configurazione completa del carosello
  */
 export function generateCarouselConfig(): CarouselAnimation {
-  const selectedImages = getRandomImages(
-    CAROUSEL_IMAGES,
-    CAROUSEL_CONFIG.imageCount
-  );
+  // Usa tutte le immagini in ordine (non casuale)
+  const selectedImages = [...CAROUSEL_IMAGES];
   const infiniteImages = createInfiniteImages(selectedImages);
   return calculateCarouselAnimation(selectedImages, infiniteImages);
 }

@@ -4,7 +4,7 @@
 import { motion } from "motion/react";
 import { useRef } from "react";
 import { useInView } from "motion/react";
-import { CAROUSEL_IMAGES } from "@/utils/carousel";
+import { PROJECT_IMAGES } from "@/utils/carousel";
 import { useMemo } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -76,7 +76,7 @@ export function ProgettiEvidenza() {
 
   // Seleziona 9 immagini per i progetti (ordine statico)
   const projects = useMemo(() => {
-    const selected = CAROUSEL_IMAGES.slice(0, 9);
+    const selected = PROJECT_IMAGES.slice(0, 9);
 
     const categories = ["Infrastrutture", "Edilizia Civile", "Opere Pubbliche"];
     const titles = [

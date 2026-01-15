@@ -1,11 +1,11 @@
 "use client";
 
 import { SplitSection } from "./SplitSection";
-import { CAROUSEL_IMAGES } from "@/utils/carousel";
+import { PROJECT_IMAGES } from "@/utils/carousel";
 
 export function LaFilosofia() {
   // Usa la prima immagine
-  const randomImage = `/compressjpeg0-imprefond/${CAROUSEL_IMAGES[1]}`;
+  const randomImage = `/compressjpeg0-imprefond/${PROJECT_IMAGES[1]}`;
 
   return (
     <SplitSection

@@ -1,20 +1,13 @@
 "use client";
 
-import { CAROUSEL_IMAGES } from "@/utils/carousel";
 import { ContentSection } from "../shared/ContentSection";
-import { useState } from "react";
 
 export function ChiSiamo() {
-  // Seleziona un'immagine casuale per il contenuto
-  const [randomImage] = useState(
-    () => CAROUSEL_IMAGES[Math.floor(Math.random() * CAROUSEL_IMAGES.length)]
-  );
-
   return (
     <ContentSection
       id="chi-siamo"
       title="Chi Siamo"
-      image={`/compressjpeg0-imprefond/${randomImage}`}
+      image="/CANTIERE TAI E VALLE DI CADORE/20250917_090247.jpg"
       content={
         <>
           <p>

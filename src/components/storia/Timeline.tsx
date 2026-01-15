@@ -4,7 +4,8 @@
 import { motion } from "motion/react";
 import { useRef } from "react";
 import { useInView } from "motion/react";
-import { CAROUSEL_IMAGES } from "@/utils/carousel";
+import { PROJECT_IMAGES } from "@/utils/carousel";
+import { timelineEvents } from "@/utils/timelineData";
 
 interface TimelineEvent {
   year: string;
@@ -12,51 +13,6 @@ interface TimelineEvent {
   description: string;
   image: string;
 }
-
-const timelineEvents: Omit<TimelineEvent, "image">[] = [
-  {
-    year: "1920",
-    title: "Le Origini",
-    description:
-      "La famiglia Amato inizia la propria attività nel settore delle costruzioni, gettando le fondamenta di quello che diventerà un impero nelle fondazioni speciali.",
-  },
-  {
-    year: "1950",
-    title: "L'Espansione",
-    description:
-      "Dopo la ricostruzione post-bellica, l'azienda si espande rapidamente, acquisendo le prime macchine specializzate e formando un team di professionisti esperti.",
-  },
-  {
-    year: "1975",
-    title: "La Specializzazione",
-    description:
-      "Imprefond si specializza esclusivamente nelle fondazioni speciali, diventando un punto di riferimento nel settore con progetti sempre più complessi e innovativi.",
-  },
-  {
-    year: "1995",
-    title: "L'Innovazione Tecnologica",
-    description:
-      "Investimenti massicci in tecnologia e macchinari all'avanguardia permettono all'azienda di affrontare progetti di grande scala con precisione e sicurezza.",
-  },
-  {
-    year: "2010",
-    title: "La Certificazione",
-    description:
-      "Ottenimento delle certificazioni SOA e ISO, riconoscimento formale dell'eccellenza operativa e dell'impegno costante per la qualità e la sicurezza.",
-  },
-  {
-    year: "2020",
-    title: "La Sostenibilità",
-    description:
-      "Nuovo focus sulla sostenibilità ambientale, con l'adozione di tecniche innovative e materiali eco-compatibili per ridurre l'impatto ambientale.",
-  },
-  {
-    year: "2026",
-    title: "Il Futuro",
-    description:
-      "Continua l'impegno verso l'innovazione e l'eccellenza, con progetti sempre più ambiziosi e un team in continua crescita per costruire il futuro dell'Italia.",
-  },
-];
 
 export function Timeline() {
   const ref = useRef(null);
@@ -78,9 +34,9 @@ export function Timeline() {
     "1950": oldStoryImages[1],
     "1975": oldStoryImages[2],
     "1995": oldStoryImages[3],
-    "2010": `/compressjpeg0-imprefond/${CAROUSEL_IMAGES[0]}`,
-    "2020": `/compressjpeg0-imprefond/${CAROUSEL_IMAGES[1]}`,
-    "2026": `/compressjpeg0-imprefond/${CAROUSEL_IMAGES[2]}`,
+    "2010": `/compressjpeg0-imprefond/${PROJECT_IMAGES[0]}`,
+    "2020": `/compressjpeg0-imprefond/${PROJECT_IMAGES[1]}`,
+    "2026": `/compressjpeg0-imprefond/${PROJECT_IMAGES[2]}`,
   };
 
   const events: TimelineEvent[] = timelineEvents.map((event) => {
@@ -142,11 +98,6 @@ export function Timeline() {
 
                 {/* Testo */}
                 <div>
-                  <div className="flex items-center gap-2 sm:gap-3 mb-1.5 sm:mb-2">
-                    <span className="text-lg sm:text-xl md:text-2xl font-bold text-blue-950">
-                      {event.year}
-                    </span>
-                  </div>
                   <h3 className="text-base sm:text-lg md:text-xl font-medium text-black mb-1.5 sm:mb-2">
                     {event.title}
                   </h3>

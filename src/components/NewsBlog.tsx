@@ -1,7 +1,7 @@
 "use client";
 
 import { SplitSection } from "./SplitSection";
-import { CAROUSEL_IMAGES } from "@/utils/carousel";
+import { PROJECT_IMAGES } from "@/utils/carousel";
 import { motion } from "motion/react";
 import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 
@@ -38,7 +38,7 @@ const newsItems: NewsItem[] = [
 
 export function NewsBlog() {
   // Usa la prima immagine
-  const randomImage = `/compressjpeg0-imprefond/${CAROUSEL_IMAGES[2]}`;
+  const randomImage = `/compressjpeg0-imprefond/${PROJECT_IMAGES[2]}`;
 
   return (
     <SplitSection

@@ -1,13 +1,13 @@
 "use client";
 
 import { SplitSection } from "./SplitSection";
-import { CAROUSEL_IMAGES } from "@/utils/carousel";
+import { PROJECT_IMAGES } from "@/utils/carousel";
 import { FaShieldAlt, FaLeaf } from "react-icons/fa";
 import { TbTruck } from "react-icons/tb";
 
 export function SicurezzaInnovazione() {
   // Usa la prima immagine
-  const randomImage = `/compressjpeg0-imprefond/${CAROUSEL_IMAGES[0]}`;
+  const randomImage = `/compressjpeg0-imprefond/${PROJECT_IMAGES[0]}`;
 
   return (
     <SplitSection
