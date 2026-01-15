@@ -2,14 +2,21 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState, useMemo } from "react";
 import { useInView } from "motion/react";
 import { PROJECT_IMAGES } from "@/utils/carousel";
-import { useMemo } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { FotoCarosello } from "./FotoCarosello";
 
 interface Project {
   image: string;
+  images: string[]; // Array di 3 immagini per il carosello
   category: string;
   title: string;
   description: string;
@@ -19,10 +26,12 @@ function ProjectCard({
   project,
   index,
   isInView,
+  onClick,
 }: {
   project: Project;
   index: number;
   isInView: boolean;
+  onClick: () => void;
 }) {
   const isLarge = index % 3 === 0;
 
@@ -34,6 +43,7 @@ function ProjectCard({
       className={`relative group cursor-pointer overflow-hidden rounded-lg ${
         isLarge ? "md:row-span-2" : ""
       }`}
+      onClick={onClick}
     >
       <div className="relative h-full w-full">
         <img
@@ -73,6 +83,7 @@ function ProjectCard({
 export function ProgettiEvidenza() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Seleziona 9 immagini per i progetti (ordine statico)
   const projects = useMemo(() => {
@@ -102,12 +113,21 @@ export function ProgettiEvidenza() {
       "Sondaggi geognostici per centro direzionale",
     ];
 
-    return selected.map((image, index) => ({
-      image: `/compressjpeg0-imprefond/${image}`,
-      category: categories[index % categories.length],
-      title: titles[index],
-      description: descriptions[index],
-    }));
+    return selected.map((image, index) => {
+      // Seleziona 3 immagini per il carosello (quella principale + 2 altre)
+      const imageIndex = index;
+      const image1 = `/compressjpeg0-imprefond/${selected[imageIndex]}`;
+      const image2 = `/compressjpeg0-imprefond/${selected[(imageIndex + 3) % selected.length]}`;
+      const image3 = `/compressjpeg0-imprefond/${selected[(imageIndex + 6) % selected.length]}`;
+
+      return {
+        image: image1,
+        images: [image1, image2, image3],
+        category: categories[index % categories.length],
+        title: titles[index],
+        description: descriptions[index],
+      };
+    });
   }, []);
 
   return (
@@ -138,10 +158,37 @@ export function ProgettiEvidenza() {
               project={project}
               index={index}
               isInView={isInView}
+              onClick={() => setSelectedProject(project)}
             />
           ))}
         </div>
       </div>
+
+      {/* Dialog con carosello foto */}
+      <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+        <DialogContent className="max-w-[90vw] w-full min-w-[50vw]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold">
+              {selectedProject?.title}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="mt-4">
+            {selectedProject && (
+              <>
+                <FotoCarosello images={selectedProject.images} />
+                <div className="mt-6">
+                  <span className="text-sm font-semibold text-blue-600 mb-2 block">
+                    {selectedProject.category}
+                  </span>
+                  <p className="text-gray-700 font-geist-sans">
+                    {selectedProject.description}
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

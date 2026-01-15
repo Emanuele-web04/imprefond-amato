@@ -1,12 +1,18 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-"use client";
-
 import { ContentSection } from "../shared/ContentSection";
 import { PROJECT_IMAGES } from "@/utils/carousel";
 import dynamic from "next/dynamic";
 import { FaArrowRight } from "react-icons/fa";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { FotoCarosello } from "../FotoCarosello";
 
 const ItalyMap = dynamic(() => import("../ItalyMap"), {
   ssr: false,
@@ -19,6 +25,7 @@ const ItalyMap = dynamic(() => import("../ItalyMap"), {
 
 interface Project {
   image: string;
+  images: string[]; // Array di 3 immagini per il carosello
   category: string;
   title: string;
   description: string;
@@ -51,18 +58,28 @@ const descriptions = [
 // Crea progetti con ordine statico iniziale
 const createProjects = (images: readonly string[]): Project[] => {
   const selected = images.slice(0, 9);
-  return selected.map((image, index) => ({
-    image: `/compressjpeg0-imprefond/${image}`,
-    category: categories[index % categories.length],
-    title: titles[index],
-    description: descriptions[index],
-  }));
+  return selected.map((image, index) => {
+    // Seleziona 3 immagini per il carosello (quella principale + 2 altre)
+    const imageIndex = index;
+    const image1 = `/compressjpeg0-imprefond/${selected[imageIndex]}`;
+    const image2 = `/compressjpeg0-imprefond/${selected[(imageIndex + 3) % selected.length]}`;
+    const image3 = `/compressjpeg0-imprefond/${selected[(imageIndex + 6) % selected.length]}`;
+
+    return {
+      image: image1,
+      images: [image1, image2, image3],
+      category: categories[index % categories.length],
+      title: titles[index],
+      description: descriptions[index],
+    };
+  });
 };
 
 export function ProgettiContent() {
   // Usa ordine statico per evitare hydration mismatch
   // Le immagini saranno sempre nello stesso ordine
   const projects = createProjects(PROJECT_IMAGES);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <>
@@ -88,6 +105,7 @@ export function ProgettiContent() {
           <div
             key={index}
             className="relative cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow"
+            onClick={() => setSelectedProject(project)}
           >
             <div className="relative aspect-[3/4]">
               <img
@@ -125,6 +143,32 @@ export function ProgettiContent() {
           </div>
         ))}
       </div>
+
+      {/* Dialog con carosello foto */}
+      <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+        <DialogContent className="max-w-[90vw] w-full min-w-[50vw]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold">
+              {selectedProject?.title}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="mt-4">
+            {selectedProject && (
+              <>
+                <FotoCarosello images={selectedProject.images} />
+                <div className="mt-6">
+                  <span className="text-sm font-semibold text-blue-600 mb-2 block">
+                    {selectedProject.category}
+                  </span>
+                  <p className="text-gray-700 font-geist-sans">
+                    {selectedProject.description}
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
