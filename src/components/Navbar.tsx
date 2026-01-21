@@ -9,6 +9,7 @@ export function Navbar() {
     { name: "Storia", href: "/storia" },
     { name: "Expertise", href: "/expertise" },
     { name: "Progetti", href: "/progetti" },
+    { name: "Certificazioni", href: "/certificazioni" },
     { name: "News", href: "/news" },
     { name: "Unisciti al Team", href: "/team" },
     { name: "Contatti", href: "/contatti" },

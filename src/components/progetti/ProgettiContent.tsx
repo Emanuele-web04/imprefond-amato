@@ -81,6 +81,55 @@ export function ProgettiContent() {
   const projects = createProjects(PROJECT_IMAGES);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  // Raggruppa progetti per categoria
+  const progettiPerCategoria = {
+    Infrastrutture: projects.filter((p) => p.category === "Infrastrutture"),
+    "Edilizia Civile": projects.filter((p) => p.category === "Edilizia Civile"),
+    "Opere Pubbliche": projects.filter((p) => p.category === "Opere Pubbliche"),
+  };
+
+  const renderProjectCard = (project: Project, index: number) => (
+    <div
+      key={index}
+      className="relative cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow"
+      onClick={() => setSelectedProject(project)}
+    >
+      <div className="relative aspect-3/4">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
+
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6">
+          <div className="text-white">
+            <span className="text-xs sm:text-sm font-semibold text-blue-300 mb-1.5 sm:mb-2 block">
+              {project.category}
+            </span>
+            <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1.5 sm:mb-2">
+              {project.title}
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-200 mb-3 sm:mb-4 font-geist-sans line-clamp-3">
+              {project.description}
+            </p>
+            <button className="flex items-center gap-1.5 sm:gap-2 text-white font-semibold hover:text-blue-300 transition-colors text-xs sm:text-sm">
+              Vedi dettagli
+              <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Label sempre visibile */}
+        <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
+          <span className="bg-white/90 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-semibold text-black">
+            {project.category}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <ContentSection
@@ -98,50 +147,54 @@ export function ProgettiContent() {
         }
       />
 
-      <ItalyMap />
+      <div id="mappa" className="mb-16 scroll-mt-24">
+        <h2 className="text-section-title mb-6">Dove Operiamo</h2>
+        <ItalyMap />
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10 md:mt-12">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="relative cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow"
-            onClick={() => setSelectedProject(project)}
-          >
-            <div className="relative aspect-[3/4]">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
+      {/* Sezione Infrastrutture */}
+      <div id="infrastrutture" className="mb-16 scroll-mt-24">
+        <h2 className="text-section-title mb-6">Infrastrutture</h2>
+        <p className="text-description mb-8">
+          Realizziamo fondazioni speciali per ponti, viadotti e infrastrutture
+          autostradali con le più avanzate tecnologie di perforazione e
+          consolidamento.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+          {progettiPerCategoria.Infrastrutture.map((project, index) =>
+            renderProjectCard(project, index)
+          )}
+        </div>
+      </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6">
-                <div className="text-white">
-                  <span className="text-xs sm:text-sm font-semibold text-blue-300 mb-1.5 sm:mb-2 block">
-                    {project.category}
-                  </span>
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1.5 sm:mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-200 mb-3 sm:mb-4 font-geist-sans line-clamp-3">
-                    {project.description}
-                  </p>
-                  <button className="flex items-center gap-1.5 sm:gap-2 text-white font-semibold hover:text-blue-300 transition-colors text-xs sm:text-sm">
-                    Vedi dettagli
-                    <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                  </button>
-                </div>
-              </div>
+      {/* Sezione Edilizia Civile */}
+      <div id="edilizia-civile" className="mb-16 scroll-mt-24">
+        <h2 className="text-section-title mb-6">Edilizia Civile</h2>
+        <p className="text-description mb-8">
+          Progettiamo e realizziamo fondazioni per edifici residenziali e
+          commerciali, garantendo stabilità e sicurezza strutturale in ogni
+          contesto urbano.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+          {progettiPerCategoria["Edilizia Civile"].map((project, index) =>
+            renderProjectCard(project, index)
+          )}
+        </div>
+      </div>
 
-              {/* Label sempre visibile */}
-              <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                <span className="bg-white/90 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-semibold text-black">
-                  {project.category}
-                </span>
-              </div>
-            </div>
-          </div>
-        ))}
+      {/* Sezione Opere Pubbliche */}
+      <div id="opere-pubbliche" className="mb-16 scroll-mt-24">
+        <h2 className="text-section-title mb-6">Opere Pubbliche</h2>
+        <p className="text-description mb-8">
+          Eseguiamo opere di consolidamento per strutture pubbliche come
+          ospedali, scuole e metropolitane, rispettando i più alti standard di
+          qualità e sicurezza.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+          {progettiPerCategoria["Opere Pubbliche"].map((project, index) =>
+            renderProjectCard(project, index)
+          )}
+        </div>
       </div>
 
       {/* Dialog con carosello foto */}
