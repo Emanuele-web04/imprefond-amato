@@ -4,6 +4,7 @@
 import { motion } from "motion/react";
 import { useRef } from "react";
 import { useInView } from "motion/react";
+import { ImageDialog } from "./ImageDialog";
 
 interface ContentSectionProps {
   id?: string;
@@ -44,15 +45,16 @@ export function ContentSection({ id, title, content, image }: ContentSectionProp
 
       {image && (
         <motion.div
-          className="mt-12 mb-16 w-full aspect-video overflow-hidden rounded-lg shadow-lg"
+          className="mt-12 mb-16"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
         >
-          <img
+          <ImageDialog
             src={image}
             alt={title}
             className="w-full h-full object-cover object-bottom"
+            containerClassName="w-full aspect-video overflow-hidden rounded-lg shadow-lg"
           />
         </motion.div>
       )}

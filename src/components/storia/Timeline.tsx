@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { useInView } from "motion/react";
 import { PROJECT_IMAGES } from "@/utils/carousel";
 import { timelineEvents } from "@/utils/timelineData";
+import { ImageDialog } from "../shared/ImageDialog";
 
 interface TimelineEvent {
   year: string;
@@ -88,11 +89,12 @@ export function Timeline() {
               {/* Contenuto - articolo compatto */}
               <div className="bg-white overflow-hidden">
                 {/* Immagine banner */}
-                <div className="w-full h-40 sm:h-48 md:h-56 lg:h-64 mb-3 sm:mb-4 rounded-lg overflow-hidden">
-                  <img
+                <div className="w-full h-40 sm:h-48 md:h-56 lg:h-64 mb-3 sm:mb-4">
+                  <ImageDialog
                     src={event.image}
                     alt={event.title}
                     className="w-full h-full object-cover"
+                    containerClassName="rounded-lg overflow-hidden w-full h-full"
                   />
                 </div>
 

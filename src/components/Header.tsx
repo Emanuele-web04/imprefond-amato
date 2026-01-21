@@ -11,10 +11,10 @@ export function Header() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Storia", href: "/storia" },
-    { name: "Trivelle", href: "/trivelle" },
     { name: "Progetti", href: "/progetti" },
+    { name: "Noleggio", href: "/noleggio" },
     { name: "News", href: "/news" },
-    { name: "Contatti", href: "/contatti" },
+    { name: "Certificazioni", href: "/certificazioni" },
   ];
 
   return (

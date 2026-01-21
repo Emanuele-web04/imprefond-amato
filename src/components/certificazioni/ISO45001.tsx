@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { useRef } from "react";
 import { useInView } from "motion/react";
+import { ImageDialog } from "../shared/ImageDialog";
 
 export function ISO45001() {
   const ref = useRef(null);
@@ -27,15 +28,16 @@ export function ISO45001() {
       </motion.h2>
 
       <motion.div
-        className="mb-8 w-full overflow-hidden rounded-lg shadow-lg bg-white"
+        className="mb-8"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
       >
-        <img
+        <ImageDialog
           src="/certificazioni-amato/CERTIFICAT 171 OHS IMPREFOND-1.png"
           alt="ISO 45001:2023"
           className="w-full h-auto"
+          containerClassName="w-full overflow-hidden rounded-lg shadow-lg bg-white"
         />
       </motion.div>
 

@@ -111,7 +111,7 @@ export function INumeri() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           <StatCard
             value={120}
             label="Anni di Esperienza"
@@ -119,14 +119,8 @@ export function INumeri() {
             isInView={isInView}
           />
           <StatCard
-            value={500}
+            value={100}
             label="Cantieri Completati"
-            suffix="+"
-            isInView={isInView}
-          />
-          <StatCard
-            value={150000}
-            label="Metri Lineari Perforati"
             suffix="+"
             isInView={isInView}
           />

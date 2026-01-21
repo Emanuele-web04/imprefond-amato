@@ -12,7 +12,7 @@ export default function CertificazioniPage() {
   return (
     <PageLayout
       title="Certificazioni"
-      heroImage="/imprefond_images/old-story2.webp"
+      heroImage="/cortina-2-2025/_DSC4996.jpg"
       breadcrumbItems={[{ label: "Certificazioni" }]}
       navItems={certificazioniNavItems}
       defaultActiveId="soa"

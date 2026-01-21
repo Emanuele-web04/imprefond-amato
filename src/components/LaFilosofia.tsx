@@ -1,15 +1,11 @@
 "use client";
 
 import { SplitSection } from "./SplitSection";
-import { PROJECT_IMAGES } from "@/utils/carousel";
 
 export function LaFilosofia() {
-  // Usa la prima immagine
-  const randomImage = `/compressjpeg0-imprefond/${PROJECT_IMAGES[1]}`;
-
   return (
     <SplitSection
-      image={randomImage}
+      image="/pngs/4.jpg"
       imagePosition="left"
       title="La Filosofia"
       ctaText="Scopri di più sulla nostra storia"

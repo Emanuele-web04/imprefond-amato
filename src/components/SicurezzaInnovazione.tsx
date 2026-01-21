@@ -2,7 +2,7 @@
 
 import { SplitSection } from "./SplitSection";
 import { PROJECT_IMAGES } from "@/utils/carousel";
-import { FaShieldAlt, FaLeaf } from "react-icons/fa";
+import { FaShieldAlt } from "react-icons/fa";
 import { TbTruck } from "react-icons/tb";
 
 export function SicurezzaInnovazione() {
@@ -51,21 +51,6 @@ export function SicurezzaInnovazione() {
                   Impegno per zero infortuni. Formazione continua, procedure
                   rigorose e attrezzature certificate garantiscono un ambiente
                   sicuro.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-                <FaLeaf className="w-5 h-5 text-blue-900" />
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-black mb-1">
-                  Sostenibilità Ambientale
-                </h3>
-                <p className="text-sm text-gray-600 font-geist-sans">
-                  Tecniche innovative, materiali sostenibili e processi
-                  ottimizzati che rispettano l&apos;ecosistema circostante.
                 </p>
               </div>
             </div>

@@ -2,7 +2,6 @@
 export const CAROUSEL_IMAGES = [
   "_DSC4982.jpg",
   "_DSC4996.jpg",
-  "_DSC4998.jpg",
   "_DSC4999.jpg",
   "_DSC5001.jpg",
 ] as const;

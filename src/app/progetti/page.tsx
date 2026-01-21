@@ -5,16 +5,16 @@ import { NavItem } from "@/components/storia/SidebarNav";
 const progettiNavItems: NavItem[] = [
   { label: "Panoramica", href: "/progetti#panoramica", id: "panoramica" },
   { label: "Mappa Progetti", href: "/progetti#mappa", id: "mappa" },
-  { label: "Infrastrutture", href: "/progetti#infrastrutture", id: "infrastrutture" },
-  { label: "Edilizia Civile", href: "/progetti#edilizia-civile", id: "edilizia-civile" },
-  { label: "Opere Pubbliche", href: "/progetti#opere-pubbliche", id: "opere-pubbliche" },
+  { label: "Trivellazioni", href: "/progetti#trivellazioni", id: "trivellazioni" },
+  { label: "Cantieri vari", href: "/progetti#cantieri-vari", id: "cantieri-vari" },
+  { label: "Edilizia", href: "/progetti#edilizia", id: "edilizia" },
 ];
 
 export default function ProgettiPage() {
   return (
     <PageLayout
       title="Progetti"
-      heroImage="/CANTIERE TAI E VALLE DI CADORE/projects.jpeg"
+      heroImage="/cortina-1-2025/_DSC4950.jpg"
       breadcrumbItems={[{ label: "Progetti" }]}
       navItems={progettiNavItems}
       defaultActiveId="panoramica"

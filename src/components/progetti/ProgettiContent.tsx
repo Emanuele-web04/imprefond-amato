@@ -31,7 +31,7 @@ interface Project {
   description: string;
 }
 
-const categories = ["Infrastrutture", "Edilizia Civile", "Opere Pubbliche"];
+const categories = ["Trivellazioni", "Cantieri vari", "Edilizia"];
 const titles = [
   "Ponte Autostradale A1",
   "Grattacielo Residenziale Milano",
@@ -83,9 +83,9 @@ export function ProgettiContent() {
 
   // Raggruppa progetti per categoria
   const progettiPerCategoria = {
-    Infrastrutture: projects.filter((p) => p.category === "Infrastrutture"),
-    "Edilizia Civile": projects.filter((p) => p.category === "Edilizia Civile"),
-    "Opere Pubbliche": projects.filter((p) => p.category === "Opere Pubbliche"),
+    Trivellazioni: projects.filter((p) => p.category === "Trivellazioni"),
+    "Cantieri vari": projects.filter((p) => p.category === "Cantieri vari"),
+    Edilizia: projects.filter((p) => p.category === "Edilizia"),
   };
 
   const renderProjectCard = (project: Project, index: number) => (
@@ -152,46 +152,46 @@ export function ProgettiContent() {
         <ItalyMap />
       </div>
 
-      {/* Sezione Infrastrutture */}
-      <div id="infrastrutture" className="mb-16 scroll-mt-24">
-        <h2 className="text-section-title mb-6">Infrastrutture</h2>
+      {/* Sezione Trivellazioni */}
+      <div id="trivellazioni" className="mb-16 scroll-mt-24">
+        <h2 className="text-section-title mb-6">Trivellazioni</h2>
         <p className="text-description mb-8">
           Realizziamo fondazioni speciali per ponti, viadotti e infrastrutture
           autostradali con le più avanzate tecnologie di perforazione e
           consolidamento.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-          {progettiPerCategoria.Infrastrutture.map((project, index) =>
+          {progettiPerCategoria.Trivellazioni.map((project, index) =>
             renderProjectCard(project, index)
           )}
         </div>
       </div>
 
-      {/* Sezione Edilizia Civile */}
-      <div id="edilizia-civile" className="mb-16 scroll-mt-24">
-        <h2 className="text-section-title mb-6">Edilizia Civile</h2>
+      {/* Sezione Cantieri vari */}
+      <div id="cantieri-vari" className="mb-16 scroll-mt-24">
+        <h2 className="text-section-title mb-6">Cantieri vari</h2>
         <p className="text-description mb-8">
           Progettiamo e realizziamo fondazioni per edifici residenziali e
           commerciali, garantendo stabilità e sicurezza strutturale in ogni
           contesto urbano.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-          {progettiPerCategoria["Edilizia Civile"].map((project, index) =>
+          {progettiPerCategoria["Cantieri vari"].map((project, index) =>
             renderProjectCard(project, index)
           )}
         </div>
       </div>
 
-      {/* Sezione Opere Pubbliche */}
-      <div id="opere-pubbliche" className="mb-16 scroll-mt-24">
-        <h2 className="text-section-title mb-6">Opere Pubbliche</h2>
+      {/* Sezione Edilizia */}
+      <div id="edilizia" className="mb-16 scroll-mt-24">
+        <h2 className="text-section-title mb-6">Edilizia</h2>
         <p className="text-description mb-8">
           Eseguiamo opere di consolidamento per strutture pubbliche come
           ospedali, scuole e metropolitane, rispettando i più alti standard di
           qualità e sicurezza.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-          {progettiPerCategoria["Opere Pubbliche"].map((project, index) =>
+          {progettiPerCategoria.Edilizia.map((project, index) =>
             renderProjectCard(project, index)
           )}
         </div>

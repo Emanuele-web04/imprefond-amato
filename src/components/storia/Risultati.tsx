@@ -26,7 +26,7 @@ const risultati: Risultato[] = [
         />
       </svg>
     ),
-    text: "Più di 500 progetti completati con successo in tutta Italia",
+    text: "Più di 100 progetti completati con successo in tutta Italia",
   },
   {
     icon: (
