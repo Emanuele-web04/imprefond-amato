@@ -11,6 +11,7 @@ export function Header() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Storia", href: "/storia" },
+    { name: "Trivelle", href: "/trivelle" },
     { name: "Progetti", href: "/progetti" },
     { name: "News", href: "/news" },
     { name: "Contatti", href: "/contatti" },

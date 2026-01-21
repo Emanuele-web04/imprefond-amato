@@ -44,7 +44,7 @@ export function ContentSection({ id, title, content, image }: ContentSectionProp
 
       {image && (
         <motion.div
-          className="mt-12 mb-16"
+          className="mt-12 mb-16 w-full aspect-video overflow-hidden rounded-lg shadow-lg"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -52,7 +52,7 @@ export function ContentSection({ id, title, content, image }: ContentSectionProp
           <img
             src={image}
             alt={title}
-            className="w-full h-auto rounded-lg shadow-lg"
+            className="w-full h-full object-cover object-bottom"
           />
         </motion.div>
       )}
