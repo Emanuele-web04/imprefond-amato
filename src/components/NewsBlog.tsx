@@ -1,7 +1,6 @@
 "use client";
 
 import { SplitSection } from "./SplitSection";
-import { PROJECT_IMAGES } from "@/utils/carousel";
 import { motion } from "motion/react";
 import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 
@@ -19,28 +18,33 @@ const newsItems: NewsItem[] = [
     location: "Milano Cortina",
     title: "Milano Cortina - Olimpiadi 2026",
     excerpt:
-      "Partecipazione ai lavori per le Olimpiadi Invernali Milano Cortina 2026. Realizzazione di fondazioni speciali e opere di consolidamento per le infrastrutture olimpiche.",
+      "Partecipazione ai lavori per le Olimpiadi Invernali Milano Cortina 2026.",
     link: "/news#milano-cortina",
   },
   {
     date: "2025",
     location: "Teramo",
-    title: "Galleria Chiangiano - Consolidamento e Sicurezza",
+    title: "Manutenzione Galleria",
     excerpt:
-      "Intervento di consolidamento strutturale per la Galleria Chiangiano. Lavori di messa in sicurezza del tunnel con tecnologie avanzate.",
+      "Intervento di consolidamento strutturale per la Galleria Chiangiano.",
     link: "/news#galleria-chiangiano",
+  },
+  {
+    date: "2025",
+    location: "Alemagna",
+    title: "S.S.51",
+    excerpt:
+      "Progetto S.S.51 - Lavori di fondazione e consolidamento.",
+    link: "/news#ss51",
   },
 ];
 
 export function NewsBlog() {
-  // Usa la prima immagine
-  const randomImage = `/compressjpeg0-imprefond/${PROJECT_IMAGES[2]}`;
-
   return (
     <SplitSection
-      image={randomImage}
+      image="/cortina-2-2025/_DSC4975.jpg"
       imagePosition="left"
-      title="News & Aggiornamenti"
+      title="News & Lavori"
       ctaText="Vedi tutte le news"
       ctaLink="/news"
       content={

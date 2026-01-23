@@ -13,7 +13,7 @@ const noleggioNavItems: NavItem[] = [
   { label: "Trasporto conto terzi", href: "/noleggio#trasporto", id: "trasporto" },
   { label: "Materiale Perforazione", href: "/noleggio#materiale-perforazione", id: "materiale-perforazione" },
   { label: "Impianti Dai Prá", href: "/noleggio#impianti-daipra", id: "impianti-daipra" },
-  { label: "Impianti Bunker", href: "/noleggio#impianti-bunker", id: "impianti-bunker" },
+  { label: "Impianti Bunker (spritz)", href: "/noleggio#impianti-bunker", id: "impianti-bunker" },
 ];
 
 export default function NoleggioPage() {

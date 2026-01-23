@@ -27,6 +27,7 @@ export function Timeline() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [contractDialogOpen, setContractDialogOpen] = useState(false);
+  const [certificazioniDialogOpen, setCertificazioniDialogOpen] = useState(false);
   const [tunnelDialogOpen, setTunnelDialogOpen] = useState(false);
 
   // Contract images for the carousel (1950) - using pre-rotated images
@@ -36,9 +37,15 @@ export function Timeline() {
     "/compressed/3.webp",
   ];
 
-  // Tunnel project images for the carousel (2022)
+  // Certificazioni images for the carousel (2010)
+  const certificazioniImages = [
+    "/certificazioni-amato/att.7415 (3)-1.png",
+    "/certificazioni-amato/CERTIFICAT 171 OHS IMPREFOND-1.png",
+    "/certificazioni-amato/ISO 9001 IMPREFOND (2)-1.png",
+  ];
+
+  // Tunnel project images for the carousel (2022) - using journal1 and journal2
   const tunnelImages = [
-    "/tunnel-comacchio-article.png",
     "/imprefond_images/journal1.webp",
     "/imprefond_images/journal2.webp",
   ];
@@ -60,7 +67,7 @@ export function Timeline() {
     "1975": oldStoryImages[3], // Moved from 1995
     "1995": "/pngs/9.jpg", // New image for Innovazione Tecnologica
     "2010": "/certificazioni-amato/ISO 9001 IMPREFOND (2)-1.png",
-    "2022": "/tunnel-comacchio-article.png",
+    "2022": "/imprefond_images/journal1.webp", // Changed to use journal1 instead of tunnel-comacchio-article
     "2026": "/cortina-2-2025/_DSC4955.jpg",
   };
 
@@ -143,15 +150,32 @@ export function Timeline() {
                   </div>
                 ) : event.year === "2010" ? (
                   <div className="w-full mb-6">
+                    {/* Desktop xl+: Show all 3 certificates side by side */}
+                    <div className="hidden xl:grid xl:grid-cols-3 gap-4">
+                      {certificazioniImages.map((image, index) => (
+                        <div 
+                          key={index}
+                          className="cursor-pointer rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                          onClick={() => setCertificazioniDialogOpen(true)}
+                        >
+                          <img
+                            src={image}
+                            alt={`Certificazione ${index + 1}`}
+                            className="w-full h-auto"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    {/* Mobile/Tablet: Show single image that opens carousel */}
                     <div 
-                      className="rounded-lg overflow-hidden"
+                      className="xl:hidden cursor-pointer rounded-lg overflow-hidden"
+                      onClick={() => setCertificazioniDialogOpen(true)}
                       style={{ maxWidth: '300px' }}
                     >
-                      <ImageDialog
+                      <img
                         src={event.image}
                         alt={event.title}
                         className="w-full h-auto"
-                        containerClassName="rounded-lg overflow-hidden w-full"
                       />
                     </div>
                   </div>
@@ -208,6 +232,35 @@ export function Timeline() {
                         alt={`Contratto Imprefond ${index + 1}`}
                         className="h-auto max-h-[50vh] w-auto rounded-lg"
                       />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-4">
+                <CarouselPrevious className="relative left-0 translate-x-0 translate-y-0" />
+                <CarouselNext className="relative right-0 translate-x-0 translate-y-0" />
+              </div>
+            </Carousel>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Carousel Dialog for Certificazioni Images */}
+      <Dialog open={certificazioniDialogOpen} onOpenChange={setCertificazioniDialogOpen}>
+        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl max-h-[98vh] sm:max-h-[95vh] w-auto h-auto p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+          <div className="relative w-full h-full flex flex-col items-center justify-center">
+            <Carousel className="w-full" opts={{ loop: true }}>
+              <CarouselContent>
+                {certificazioniImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="flex items-center justify-center p-1 sm:p-2 md:p-4">
+                      <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center">
+                        <img
+                          src={image}
+                          alt={`Certificazione ${index + 1}`}
+                          className="max-w-full max-h-full w-auto h-auto rounded-lg object-contain"
+                        />
+                      </div>
                     </div>
                   </CarouselItem>
                 ))}

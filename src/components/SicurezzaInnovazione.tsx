@@ -7,7 +7,7 @@ import { TbTruck } from "react-icons/tb";
 export function SicurezzaInnovazione() {
   return (
     <SplitSection
-      image="/cortina-2-2025/_DSC4975.jpg"
+      image="/cortina-2-2025/_DSC4971.jpg"
       imagePosition="right"
       title="Sicurezza e Innovazione"
       ctaText="Scopri i nostri servizi"

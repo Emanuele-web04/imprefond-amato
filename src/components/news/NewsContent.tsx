@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ContentSection } from "../shared/ContentSection";
 import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "motion/react";
 import { useRef, useState } from "react";
@@ -9,7 +8,6 @@ import { useInView } from "motion/react";
 import {
   Dialog,
   DialogContent,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Carousel,
@@ -31,11 +29,6 @@ interface NewsItem {
 
 // Cortina images
 const cortinaImages = [
-  "/cortina-1-2025/_DSC4941.jpg",
-  "/cortina-1-2025/_DSC4942.jpg",
-  "/cortina-1-2025/_DSC4943.jpg",
-  "/cortina-1-2025/_DSC4944.jpg",
-  "/cortina-1-2025/_DSC4945.jpg",
   "/cortina-1-2025/_DSC4946.jpg",
   "/cortina-1-2025/_DSC4947.jpg",
   "/cortina-1-2025/_DSC4948.jpg",
@@ -45,11 +38,17 @@ const cortinaImages = [
 
 // Galleria Chiangiano images
 const galleriaImages = [
-  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09.webp",
-  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (1).webp",
-  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (2).webp",
-  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (3).webp",
-  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (4).webp",
+  "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09.webp",
+  "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09 (1).webp",
+  "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09 (2).webp",
+  "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09 (3).webp",
+  "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09 (4).webp",
+];
+
+// SS51 images
+const ss51Images = [
+  "/SS51/ss51-1.jpeg",
+  "/SS51/ss51-2.jpeg",
 ];
 
 const newsItems: NewsItem[] = [
@@ -67,13 +66,24 @@ const newsItems: NewsItem[] = [
   {
     date: "2025",
     location: "Teramo",
-    title: "Galleria Chiangiano - Consolidamento e Sicurezza",
+    title: "Manutenzione Galleria",
     excerpt:
       "Intervento di consolidamento strutturale per la Galleria Chiangiano.",
     fullContent:
       "Imprefond prosegue il suo impegno nelle grandi opere infrastrutturali con l'intervento presso la Galleria Chiangiano. Il progetto prevede complessi lavori di consolidamento e messa in sicurezza del tunnel, utilizzando tecnologie avanzate per garantire la stabilità della struttura e la sicurezza della viabilità. L'opera rappresenta un tassello fondamentale per il potenziamento della rete viaria locale.",
-    image: "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09.webp",
+    image: "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09.webp",
     carouselImages: galleriaImages,
+  },
+  {
+    date: "2025",
+    location: "Alemagna",
+    title: "S.S.51",
+    excerpt:
+      "Progetto S.S.51 - Lavori di fondazione e consolidamento.",
+    fullContent:
+      "Imprefond è impegnata nel progetto S.S.51, realizzando opere di fondazione speciale e consolidamento strutturale. Il progetto rappresenta un importante intervento nel settore delle infrastrutture, dimostrando la nostra capacità di affrontare progetti complessi con competenza e professionalità.",
+    image: "/SS51/ss51-1.jpeg",
+    carouselImages: ss51Images,
   },
 ];
 
@@ -94,6 +104,16 @@ interface NewsArticleProps {
 
 // Helper per generare slug dal titolo
 function createSlug(title: string): string {
+  // Mapping specifico per titoli che devono avere slug diversi
+  const slugMap: Record<string, string> = {
+    "Manutenzione Galleria": "galleria-chiangiano",
+    "S.S.51": "ss51",
+  };
+  
+  if (slugMap[title]) {
+    return slugMap[title];
+  }
+  
   const mainTitle = title.split("-")[0].trim();
   return mainTitle
     .toLowerCase()
@@ -101,7 +121,7 @@ function createSlug(title: string): string {
     .replace(/[^\w-]+/g, "");
 }
 
-function NewsArticle({ item, index }: NewsArticleProps) {
+function NewsArticle({ item }: NewsArticleProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -166,13 +186,13 @@ function NewsArticle({ item, index }: NewsArticleProps) {
       {/* Carousel Dialog */}
       {item.carouselImages && (
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+          <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
             <div className="relative w-full flex flex-col items-center justify-center">
               <Carousel className="w-full" opts={{ loop: true }}>
                 <CarouselContent>
                   {item.carouselImages.map((image, idx) => (
                     <CarouselItem key={idx}>
-                      <div className="flex items-center justify-center p-4">
+                      <div className="flex items-center justify-center p-1 sm:p-2 md:p-4">
                         <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center">
                           <img
                             src={image}

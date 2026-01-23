@@ -22,7 +22,7 @@ export function MainContent() {
         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <div className="w-[70%]">
+        <div className="w-[70%] mr-auto">
           <ImageDialog
             src="/CANTIERE TAI E VALLE DI CADORE/20250917_090247.jpg"
             alt="Imprefond"
