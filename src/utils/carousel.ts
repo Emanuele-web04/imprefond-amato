@@ -3,7 +3,7 @@ export const CAROUSEL_IMAGES = [
   "_DSC4982.jpg",
   "_DSC4996.jpg",
   "_DSC4999.jpg",
-  "_DSC5001.jpg",
+  "_DSC4979.jpg",
 ] as const;
 
 // Lista delle immagini per progetti e altre sezioni

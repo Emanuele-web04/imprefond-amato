@@ -2,7 +2,6 @@
 
 import { MapContainer, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useEffect, useState } from "react";
 
 interface CityMarker {
   name: string;
@@ -26,25 +25,7 @@ const italianCities: CityMarker[] = [
 ];
 
 export default function ItalyMapLeaflet() {
-  const [isMounted, setIsMounted] = useState(false);
   const italyCenter: [number, number] = [41.9, 12.49];
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return (
-      <div className="w-full mb-12">
-        <h3 className="text-xl font-medium text-black mb-4 text-left">
-          I Nostri Progetti in Italia
-        </h3>
-        <div className="h-[500px] w-full rounded-xl overflow-hidden border border-slate-200 shadow-sm relative z-0 bg-[#f8fafc] flex items-center justify-center">
-          <p className="text-gray-500">Caricamento mappa...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full mb-12">
@@ -58,6 +39,7 @@ export default function ItalyMapLeaflet() {
           zoom={6}
           scrollWheelZoom={false}
           className="h-full w-full bg-[#f8fafc]"
+          style={{ height: "100%", width: "100%" }}
         >
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"

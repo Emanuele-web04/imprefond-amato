@@ -15,13 +15,13 @@ interface FotoCaroselloProps {
 
 export function FotoCarosello({ images }: FotoCaroselloProps) {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full overflow-hidden">
       <Carousel className="w-full" opts={{ loop: true }}>
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem key={index}>
               <div className="flex items-center justify-center">
-                <div className="relative w-full h-[500px] flex items-center justify-center rounded-lg overflow-hidden">
+                <div className="relative w-full h-[60vh] sm:h-[500px] flex items-center justify-center rounded-lg overflow-hidden">
                   <img
                     src={image}
                     alt={`Foto ${index + 1}`}

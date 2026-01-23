@@ -53,11 +53,11 @@ export function SplitSection({
         initial={{ opacity: 0, x: textSide === "left" ? -50 : 50 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        className={`relative w-full md:w-1/2 min-h-screen flex items-center justify-center bg-white ${
+        className={`relative w-full md:w-1/2 md:min-h-screen flex items-center justify-center bg-white ${
           textSide === "left" ? "order-2 md:order-1" : "order-2 md:order-2"
         }`}
       >
-        <div className="max-w-2xl px-6 md:px-12 py-12 md:py-16 flex flex-col items-start">
+        <div className="max-w-2xl px-6 md:px-12 py-8 md:py-16 flex flex-col items-start">
           <h2 className="text-title mb-6">{title}</h2>
           <div className="text-description mb-8">{content}</div>
 
