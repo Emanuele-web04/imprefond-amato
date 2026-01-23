@@ -17,11 +17,12 @@ const storiaNavItems: NavItem[] = [
 export default function StoriaPage() {
   return (
     <PageLayout
-      title="Storia"
-      heroImage="/imprefond_images/old-story2.webp"
-      breadcrumbItems={[{ label: "Storia" }]}
+      title="La Storia di Imprefond"
+      heroImage="/history-imprefond (1).png"
+      breadcrumbItems={[{ label: "La Storia di Imprefond" }]}
       navItems={storiaNavItems}
       defaultActiveId="chi-siamo"
+      showRisultati={false}
     >
       <MainContent />
     </PageLayout>

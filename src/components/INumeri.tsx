@@ -125,7 +125,7 @@ export function INumeri() {
             isInView={isInView}
           />
           <StatCard
-            value={5}
+            value={3}
             label="Certificazioni"
             suffix=""
             isInView={isInView}

@@ -2,11 +2,19 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { motion } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useInView } from "motion/react";
 import { PROJECT_IMAGES } from "@/utils/carousel";
 import { timelineEvents } from "@/utils/timelineData";
 import { ImageDialog } from "../shared/ImageDialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface TimelineEvent {
   year: string;
@@ -18,6 +26,22 @@ interface TimelineEvent {
 export function Timeline() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [contractDialogOpen, setContractDialogOpen] = useState(false);
+  const [tunnelDialogOpen, setTunnelDialogOpen] = useState(false);
+
+  // Contract images for the carousel (1950) - using pre-rotated images
+  const contractImages = [
+    "/compressed/1.webp",
+    "/compressed/2.webp",
+    "/compressed/3.webp",
+  ];
+
+  // Tunnel project images for the carousel (2022)
+  const tunnelImages = [
+    "/tunnel-comacchio-article.png",
+    "/imprefond_images/journal1.webp",
+    "/imprefond_images/journal2.webp",
+  ];
 
   // Immagini old-story per gli anni '90
   const oldStoryImages = [
@@ -31,13 +55,13 @@ export function Timeline() {
   // Genera immagini per ogni evento (ordine statico per evitare hydration mismatch)
   // Mappa ogni anno a un'immagine specifica per garantire che siano tutte diverse
   const yearToImageMap: Record<string, string> = {
-    "1920": oldStoryImages[0],
-    "1950": oldStoryImages[1],
-    "1975": oldStoryImages[2],
-    "1995": oldStoryImages[3],
-    "2010": `/compressjpeg0-imprefond/${PROJECT_IMAGES[0]}`,
-    "2020": `/compressjpeg0-imprefond/${PROJECT_IMAGES[1]}`,
-    "2026": `/compressjpeg0-imprefond/${PROJECT_IMAGES[2]}`,
+    "1920": "/new-images/bw-imprefond.jpeg",
+    "1950": "/compressed/1.webp", // Using pre-rotated image
+    "1975": oldStoryImages[3], // Moved from 1995
+    "1995": "/pngs/9.jpg", // New image for Innovazione Tecnologica
+    "2010": "/certificazioni-amato/ISO 9001 IMPREFOND (2)-1.png",
+    "2022": "/tunnel-comacchio-article.png",
+    "2026": "/cortina-2-2025/_DSC4955.jpg",
   };
 
   const events: TimelineEvent[] = timelineEvents.map((event) => {
@@ -89,14 +113,71 @@ export function Timeline() {
               {/* Contenuto - articolo compatto */}
               <div className="bg-white overflow-hidden">
                 {/* Immagine banner */}
-                <div className="w-full h-40 sm:h-48 md:h-56 lg:h-64 mb-3 sm:mb-4">
-                  <ImageDialog
-                    src={event.image}
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                    containerClassName="rounded-lg overflow-hidden w-full h-full"
-                  />
-                </div>
+                {event.year === "1950" ? (
+                  <div className="w-full mb-6">
+                    <div 
+                      className="cursor-pointer rounded-lg overflow-hidden"
+                      onClick={() => setContractDialogOpen(true)}
+                      style={{ maxWidth: '300px' }}
+                    >
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  </div>
+                ) : event.year === "1975" ? (
+                  <div className="w-full mb-6">
+                    <div 
+                      className="rounded-lg overflow-hidden"
+                      style={{ maxWidth: '300px' }}
+                    >
+                      <ImageDialog
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-auto"
+                        containerClassName="rounded-lg overflow-hidden w-full"
+                      />
+                    </div>
+                  </div>
+                ) : event.year === "2010" ? (
+                  <div className="w-full mb-6">
+                    <div 
+                      className="rounded-lg overflow-hidden"
+                      style={{ maxWidth: '300px' }}
+                    >
+                      <ImageDialog
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-auto"
+                        containerClassName="rounded-lg overflow-hidden w-full"
+                      />
+                    </div>
+                  </div>
+                ) : event.year === "2022" ? (
+                  <div className="w-full mb-3 sm:mb-4">
+                    <div 
+                      className="cursor-pointer rounded-lg overflow-hidden"
+                      onClick={() => setTunnelDialogOpen(true)}
+                    >
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-full mb-3 sm:mb-4">
+                    <ImageDialog
+                      src={event.image}
+                      alt={event.title}
+                      className="w-full h-auto"
+                      containerClassName="rounded-lg overflow-hidden w-full"
+                    />
+                  </div>
+                )}
 
                 {/* Testo */}
                 <div>
@@ -112,6 +193,60 @@ export function Timeline() {
           ))}
         </div>
       </div>
+
+      {/* Carousel Dialog for Contract Images */}
+      <Dialog open={contractDialogOpen} onOpenChange={setContractDialogOpen}>
+        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl max-h-[98vh] sm:max-h-[95vh] w-auto h-auto p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+          <div className="relative w-full h-full flex flex-col items-center justify-center">
+            <Carousel className="w-full" opts={{ loop: true }}>
+              <CarouselContent>
+                {contractImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="flex items-center justify-center p-4">
+                      <img
+                        src={image}
+                        alt={`Contratto Imprefond ${index + 1}`}
+                        className="h-auto max-h-[50vh] w-auto rounded-lg"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-4">
+                <CarouselPrevious className="relative left-0 translate-x-0 translate-y-0" />
+                <CarouselNext className="relative right-0 translate-x-0 translate-y-0" />
+              </div>
+            </Carousel>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Carousel Dialog for Tunnel Project Images */}
+      <Dialog open={tunnelDialogOpen} onOpenChange={setTunnelDialogOpen}>
+        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl max-h-[98vh] sm:max-h-[95vh] w-auto h-auto p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+          <div className="relative w-full h-full flex flex-col items-center justify-center">
+            <Carousel className="w-full" opts={{ loop: true }}>
+              <CarouselContent>
+                {tunnelImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="flex items-center justify-center p-4">
+                      <img
+                        src={image}
+                        alt={`Progetto Tunnel A26 ${index + 1}`}
+                        className="h-auto max-h-[50vh] w-auto rounded-lg"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-4">
+                <CarouselPrevious className="relative left-0 translate-x-0 translate-y-0" />
+                <CarouselNext className="relative right-0 translate-x-0 translate-y-0" />
+              </div>
+            </Carousel>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

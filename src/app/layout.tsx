@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { geistSans, spaceGrotesk } from "../utils/fonts";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Imprefond",
@@ -18,6 +19,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${spaceGrotesk.variable} font-space-grotesk! tracking-tighter antialiased`}
       >
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -4,8 +4,20 @@
 import { ContentSection } from "../shared/ContentSection";
 import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useInView } from "motion/react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface NewsItem {
   date: string;
@@ -14,74 +26,54 @@ interface NewsItem {
   excerpt: string;
   fullContent: string;
   image: string;
+  carouselImages?: string[];
 }
 
-// Immagini journal disponibili
-const journalImages = [
-  "/imprefond_images/journal1.webp",
-  "/imprefond_images/journal2.webp",
+// Cortina images
+const cortinaImages = [
+  "/cortina-1-2025/_DSC4941.jpg",
+  "/cortina-1-2025/_DSC4942.jpg",
+  "/cortina-1-2025/_DSC4943.jpg",
+  "/cortina-1-2025/_DSC4944.jpg",
+  "/cortina-1-2025/_DSC4945.jpg",
+  "/cortina-1-2025/_DSC4946.jpg",
+  "/cortina-1-2025/_DSC4947.jpg",
+  "/cortina-1-2025/_DSC4948.jpg",
+  "/cortina-1-2025/_DSC4949.jpg",
+  "/cortina-1-2025/_DSC4950.jpg",
+];
+
+// Galleria Chiangiano images
+const galleriaImages = [
+  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09.webp",
+  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (1).webp",
+  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (2).webp",
+  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (3).webp",
+  "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (4).webp",
 ];
 
 const newsItems: NewsItem[] = [
   {
-    date: "15 Gennaio 2024",
-    location: "Milano",
-    title: "Nuovo cantiere avviato a Milano",
+    date: "2026",
+    location: "Milano Cortina",
+    title: "Milano Cortina - Olimpiadi 2026",
     excerpt:
-      "Avviato il cantiere per le fondazioni del nuovo complesso residenziale nel quartiere Porta Nuova.",
+      "Partecipazione ai lavori per le Olimpiadi Invernali Milano Cortina 2026.",
     fullContent:
-      "Abbiamo avviato i lavori per il nuovo complesso residenziale nel quartiere Porta Nuova a Milano. L'intervento prevede la realizzazione di micropali per il consolidamento del terreno su un'area di oltre 5000 metri quadrati. Il progetto rappresenta una delle sfide più importanti dell'anno e coinvolge un team di 30 professionisti specializzati.",
-    image: journalImages[0],
+      "Imprefond è orgogliosa di partecipare ai lavori per le Olimpiadi Invernali Milano Cortina 2026. Il nostro team sta realizzando fondazioni speciali e opere di consolidamento per le infrastrutture olimpiche, contribuendo a questo importante evento internazionale che porterà l'Italia al centro del mondo dello sport invernale.",
+    image: "/cortina-2-2025/_DSC4955.jpg",
+    carouselImages: cortinaImages,
   },
   {
-    date: "10 Gennaio 2024",
-    location: "Roma",
-    title: "Aggiornamento parco macchine: arriva la nuova perforatrice",
+    date: "2025",
+    location: "Teramo",
+    title: "Galleria Chiangiano - Consolidamento e Sicurezza",
     excerpt:
-      "Ampliamento del parco macchine con l'acquisizione di una perforatrice all'avanguardia.",
+      "Intervento di consolidamento strutturale per la Galleria Chiangiano.",
     fullContent:
-      "Continua il nostro impegno nell'innovazione tecnologica con l'acquisizione di una nuova perforatrice di ultima generazione. Il macchinario, dotato di sistemi di controllo automatizzati, permetterà di aumentare l'efficienza e la precisione degli interventi, riducendo al contempo i tempi di esecuzione e l'impatto ambientale.",
-    image: journalImages[1],
-  },
-  {
-    date: "5 Gennaio 2024",
-    location: "Torino",
-    title: "Completato progetto infrastrutturale autostradale",
-    excerpt:
-      "Concluso con successo il progetto di consolidamento per il ponte autostradale A4.",
-    fullContent:
-      "Si è concluso con grande successo il progetto di consolidamento per il ponte autostradale A4. L'intervento, durato 8 mesi, ha previsto l'utilizzo di tecniche innovative di iniezione e consolidamento, garantendo la sicurezza e la stabilità della struttura per i prossimi decenni. Il progetto ha ricevuto riconoscimenti per l'eccellenza tecnica e il rispetto dei tempi di consegna.",
-    image: journalImages[0],
-  },
-  {
-    date: "20 Dicembre 2023",
-    location: "Firenze",
-    title: "Partnership con importante studio di ingegneria",
-    excerpt:
-      "Siglato accordo strategico per la collaborazione su grandi opere pubbliche.",
-    fullContent:
-      "Abbiamo siglato un importante accordo di partnership con uno dei principali studi di ingegneria italiani. La collaborazione ci permetterà di partecipare a progetti di grande rilevanza nel settore delle infrastrutture e delle opere pubbliche, consolidando la nostra posizione di leader nel mercato delle fondazioni speciali.",
-    image: journalImages[1],
-  },
-  {
-    date: "15 Dicembre 2023",
-    location: "Bologna",
-    title: "Certificazione ISO 45001:2018 ottenuta",
-    excerpt:
-      "Raggiunto un importante traguardo in materia di sicurezza sul lavoro.",
-    fullContent:
-      "Siamo orgogliosi di annunciare il conseguimento della certificazione ISO 45001:2018 per i sistemi di gestione della salute e sicurezza sul lavoro. Questo riconoscimento conferma il nostro impegno costante per garantire il massimo livello di sicurezza per tutti i nostri collaboratori e cantieri.",
-    image: journalImages[0],
-  },
-  {
-    date: "1 Dicembre 2023",
-    location: "Napoli",
-    title: "Inaugurazione nuova sede operativa",
-    excerpt:
-      "Aperta la nuova sede nel Sud Italia per servire meglio il territorio.",
-    fullContent:
-      "È stata inaugurata la nuova sede operativa a Napoli, che ci permetterà di servire con maggiore efficienza tutto il territorio del Sud Italia. La struttura ospita uffici tecnici, magazzini attrezzature e un'area dedicata alla formazione del personale, rafforzando la nostra presenza capillare sul territorio nazionale.",
-    image: journalImages[1],
+      "Imprefond prosegue il suo impegno nelle grandi opere infrastrutturali con l'intervento presso la Galleria Chiangiano. Il progetto prevede complessi lavori di consolidamento e messa in sicurezza del tunnel, utilizzando tecnologie avanzate per garantire la stabilità della struttura e la sicurezza della viabilità. L'opera rappresenta un tassello fondamentale per il potenziamento della rete viaria locale.",
+    image: "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09.webp",
+    carouselImages: galleriaImages,
   },
 ];
 
@@ -100,28 +92,52 @@ interface NewsArticleProps {
   index: number;
 }
 
+// Helper per generare slug dal titolo
+function createSlug(title: string): string {
+  const mainTitle = title.split("-")[0].trim();
+  return mainTitle
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "");
+}
+
 function NewsArticle({ item, index }: NewsArticleProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const slug = createSlug(item.title);
 
   return (
     <article
-      id={`news-${index}`}
+      id={slug}
       ref={ref}
       className="relative flex flex-col min-h-screen w-full mb-10 sm:mb-12 md:mb-14 lg:mb-16"
     >
-      {/* Immagine full height */}
+      {/* Immagine full height - Clickable if carousel images exist */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[70vh]"
       >
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-full object-cover rounded-lg"
-        />
+        {item.carouselImages ? (
+          <div 
+            className="w-full h-full cursor-pointer" 
+            onClick={() => setDialogOpen(true)}
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover rounded-lg hover:opacity-95 transition-opacity"
+            />
+          </div>
+        ) : (
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-full object-cover rounded-lg"
+          />
+        )}
       </motion.div>
 
       {/* Contenuto Testuale */}
@@ -146,6 +162,37 @@ function NewsArticle({ item, index }: NewsArticleProps) {
         
         <p className="text-description leading-relaxed">{item.fullContent}</p>
       </motion.div>
+
+      {/* Carousel Dialog */}
+      {item.carouselImages && (
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+          <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+            <div className="relative w-full flex flex-col items-center justify-center">
+              <Carousel className="w-full" opts={{ loop: true }}>
+                <CarouselContent>
+                  {item.carouselImages.map((image, idx) => (
+                    <CarouselItem key={idx}>
+                      <div className="flex items-center justify-center p-4">
+                        <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center">
+                          <img
+                            src={image}
+                            alt={`${item.title} - ${idx + 1}`}
+                            className="max-w-full max-h-full w-auto h-auto rounded-lg object-contain"
+                          />
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="flex justify-center gap-4 mt-4">
+                  <CarouselPrevious className="relative left-0 translate-x-0 translate-y-0" />
+                  <CarouselNext className="relative right-0 translate-x-0 translate-y-0" />
+                </div>
+              </Carousel>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </article>
   );
 }

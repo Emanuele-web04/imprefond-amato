@@ -10,14 +10,14 @@ export function ImpiantiBunker() {
       content={
         <>
           <p>
-            Gli impianti Bunker sono sistemi di perforazione robuste e potenti,
-            ideali per la realizzazione di diaframmi, pali di grande diametro e
-            opere di fondazione profonda.
+            Pompe ideate per il pompaggio di calcestruzzo con inerti di varia
+            granulometria. Con queste macchine è possibile produrre cemento
+            cellulare e calcestruzzo leggero polistirenico.
           </p>
           <p>
-            Progettati per cantieri di grandi dimensioni, questi impianti offrono
-            elevate capacità di coppia e profondità, garantendo risultati
-            eccellenti anche nei terreni più difficili.
+            Particolarmente indicate per pompare malte, massetti autolivellanti
+            e calcestruzzo. Utilizzabili anche per spruzzare intonaco e per
+            iniettare miscele di cemento in micropali e tiranti.
           </p>
         </>
       }

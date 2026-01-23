@@ -1,17 +1,13 @@
 "use client";
 
 import { SplitSection } from "./SplitSection";
-import { PROJECT_IMAGES } from "@/utils/carousel";
 import { FaShieldAlt } from "react-icons/fa";
 import { TbTruck } from "react-icons/tb";
 
 export function SicurezzaInnovazione() {
-  // Usa la prima immagine
-  const randomImage = `/compressjpeg0-imprefond/${PROJECT_IMAGES[0]}`;
-
   return (
     <SplitSection
-      image={randomImage}
+      image="/cortina-2-2025/_DSC4975.jpg"
       imagePosition="right"
       title="Sicurezza e Innovazione"
       ctaText="Scopri i nostri servizi"

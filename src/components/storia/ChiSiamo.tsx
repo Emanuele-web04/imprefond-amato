@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { useRef } from "react";
 import { useInView } from "motion/react";
-import { ImageDialog } from "../shared/ImageDialog";
 
 export function ChiSiamo() {
   const ref = useRef(null);
@@ -26,20 +25,6 @@ export function ChiSiamo() {
       >
         Chi Siamo
       </motion.h2>
-
-      <motion.div
-        className="mb-8"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-      >
-        <ImageDialog
-          src="/CANTIERE TAI E VALLE DI CADORE/20250917_090247.jpg"
-          alt="Chi Siamo"
-          className="w-full h-auto"
-          containerClassName="w-full overflow-hidden rounded-lg shadow-lg"
-        />
-      </motion.div>
 
       <motion.div
         className="space-y-6 text-description"

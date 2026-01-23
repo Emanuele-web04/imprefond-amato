@@ -10,29 +10,25 @@ interface NewsItem {
   location: string;
   title: string;
   excerpt: string;
+  link: string;
 }
 
 const newsItems: NewsItem[] = [
   {
-    date: "15 Gennaio 2024",
-    location: "Milano",
-    title: "Nuovo cantiere avviato a Milano",
+    date: "2026",
+    location: "Milano Cortina",
+    title: "Milano Cortina - Olimpiadi 2026",
     excerpt:
-      "Avviato il cantiere per le fondazioni del nuovo complesso residenziale nel quartiere Porta Nuova. Intervento con micropali per consolidamento terreno.",
+      "Partecipazione ai lavori per le Olimpiadi Invernali Milano Cortina 2026. Realizzazione di fondazioni speciali e opere di consolidamento per le infrastrutture olimpiche.",
+    link: "/news#milano-cortina",
   },
   {
-    date: "10 Gennaio 2024",
-    location: "Roma",
-    title: "Aggiornamento parco macchine: arriva la nuova perforatrice",
+    date: "2025",
+    location: "Teramo",
+    title: "Galleria Chiangiano - Consolidamento e Sicurezza",
     excerpt:
-      "Ampliamento del parco macchine con l&apos;acquisizione di una perforatrice all&apos;avanguardia per migliorare efficienza e precisione degli interventi.",
-  },
-  {
-    date: "5 Gennaio 2024",
-    location: "Torino",
-    title: "Completato progetto infrastrutturale autostradale",
-    excerpt:
-      "Concluso con successo il progetto di consolidamento per il ponte autostradale A4. Utilizzate tecniche innovative di iniezione e consolidamento.",
+      "Intervento di consolidamento strutturale per la Galleria Chiangiano. Lavori di messa in sicurezza del tunnel con tecnologie avanzate.",
+    link: "/news#galleria-chiangiano",
   },
 ];
 
@@ -57,24 +53,26 @@ export function NewsBlog() {
           <div className="space-y-6">
             {newsItems.map((item, index) => (
               <div key={index} className="border-l-4 border-blue-950 pl-4">
-                <motion.div className="hover:translate-x-3 cursor-pointer transition-transform duration-300">
-                  <div className="flex flex-wrap items-center gap-3 mb-2 text-xs text-gray-500">
-                    <div className="flex items-center gap-1">
-                      <FaCalendar className="w-3.5 h-3.5" />
-                      <span>{item.date}</span>
+                <a href={item.link} className="block group">
+                  <motion.div className="group-hover:translate-x-3 cursor-pointer transition-transform duration-300">
+                    <div className="flex flex-wrap items-center gap-3 mb-2 text-xs text-gray-500">
+                      <div className="flex items-center gap-1">
+                        <FaCalendar className="w-3.5 h-3.5" />
+                        <span>{item.date}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FaMapMarkerAlt className="w-3.5 h-3.5" />
+                        <span>{item.location}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <FaMapMarkerAlt className="w-3.5 h-3.5" />
-                      <span>{item.location}</span>
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-medium text-black mb-1.5">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed font-geist-sans">
-                    {item.excerpt}
-                  </p>
-                </motion.div>
+                    <h3 className="text-lg font-medium text-black mb-1.5 group-hover:text-blue-900 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed font-geist-sans">
+                      {item.excerpt}
+                    </p>
+                  </motion.div>
+                </a>
               </div>
             ))}
           </div>

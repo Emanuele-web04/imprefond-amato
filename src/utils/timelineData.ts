@@ -13,9 +13,9 @@ export const timelineEvents: TimelineEventData[] = [
   },
   {
     year: "1950",
-    title: "L'Espansione",
+    title: "I primi contratti",
     description:
-      "Dopo la ricostruzione post-bellica, l'azienda si espande rapidamente, acquisendo le prime macchine specializzate e formando un team di professionisti esperti.",
+      "I primi importanti contratti segnano l'inizio della crescita dell'azienda, consolidando la reputazione di Imprefond nel settore delle fondazioni speciali attraverso progetti di qualità e affidabilità.",
   },
   {
     year: "1975",
@@ -33,18 +33,18 @@ export const timelineEvents: TimelineEventData[] = [
     year: "2010",
     title: "La Certificazione",
     description:
-      "Ottenimento delle certificazioni SOA e ISO, riconoscimento formale dell'eccellenza operativa e dell'impegno costante per la qualità e la sicurezza.",
+      "Il Sistema di Gestione per la Qualità di Imprefond F.lli Amato S.R.L. è stato verificato e trovato conforme ai requisiti dello standard UNI EN ISO 9001. La certificazione, rilasciata da ISE Cert e accreditata nel settore IAF 28, copre l'esecuzione di trivellazioni, attestando l'impegno dell'azienda nel mantenere elevati standard qualitativi in tutti i processi operativi.",
   },
   {
-    year: "2020",
-    title: "La Sostenibilità",
+    year: "2022",
+    title: "Progetto A26 - Tunnel Genova-Gravellona Toce",
     description:
-      "Nuovo focus sulla sostenibilità ambientale, con l'adozione di tecniche innovative e materiali eco-compatibili per ridurre l'impatto ambientale.",
+      "Realizzazione di consolidamenti radiali in calotta per la messa in sicurezza di tunnel autostradali lungo la A26, utilizzando perforatrici Comacchio MC 12 completamente radiocomandate per garantire massima sicurezza operativa.",
   },
   {
     year: "2026",
-    title: "Il Futuro",
+    title: "Il Futuro - Milano Cortina Olimpiadi 2026",
     description:
-      "Continua l'impegno verso l'innovazione e l'eccellenza, con progetti sempre più ambiziosi e un team in continua crescita per costruire il futuro dell'Italia.",
+      "Partecipazione ai lavori per le Olimpiadi Invernali Milano Cortina 2026. Realizzazione di fondazioni speciali e opere di consolidamento per le infrastrutture olimpiche, contribuendo a questo importante evento internazionale che porterà l'Italia al centro del mondo dello sport invernale.",
   },
 ];

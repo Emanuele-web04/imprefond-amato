@@ -17,17 +17,10 @@ interface SidebarNavProps {
 
 export function SidebarNav({ navItems, defaultActiveId }: SidebarNavProps) {
   const pathname = usePathname();
-  const [activeId, setActiveId] = useState(() => {
-    if (typeof window !== "undefined") {
-      return (
-        window.location.hash.slice(1) ||
-        defaultActiveId ||
-        navItems[0]?.id ||
-        ""
-      );
-    }
-    return defaultActiveId || navItems[0]?.id || "";
-  });
+  // Initialize with stable default value to avoid hydration mismatch
+  const [activeId, setActiveId] = useState<string>(() => 
+    defaultActiveId || navItems[0]?.id || ""
+  );
 
   // Scroll to section when hash changes
   useEffect(() => {
@@ -52,22 +45,26 @@ export function SidebarNav({ navItems, defaultActiveId }: SidebarNavProps) {
     };
 
     const handleHashChange = () => {
-      const newHash = window.location.hash.slice(1);
-      setActiveId(newHash || defaultActiveId || navItems[0]?.id || "");
-      scrollToSection(newHash);
+      const hash = window.location.hash.slice(1);
+      // Only update if hash exists, otherwise keep current or default
+      if (hash) {
+        setActiveId(hash);
+        scrollToSection(hash);
+      }
     };
 
     // Handle initial hash on page load
-    if (typeof window !== "undefined") {
-      const initialHash = window.location.hash.slice(1);
-      if (initialHash) {
-        scrollToSection(initialHash);
-      }
+    const initialHash = window.location.hash.slice(1);
+    if (initialHash) {
+      setActiveId(initialHash);
+      scrollToSection(initialHash);
     }
 
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [pathname, defaultActiveId, navItems]);
+  }, [pathname, navItems]);
+
+
 
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement>,

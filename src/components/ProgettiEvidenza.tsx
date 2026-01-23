@@ -33,19 +33,15 @@ function ProjectCard({
   isInView: boolean;
   onClick: () => void;
 }) {
-  const isLarge = index % 3 === 0;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`relative group cursor-pointer overflow-hidden rounded-lg ${
-        isLarge ? "md:row-span-2" : ""
-      }`}
+      className="relative group cursor-pointer overflow-hidden rounded-lg"
       onClick={onClick}
     >
-      <div className="relative h-full w-full">
+      <div className="relative aspect-[4/3] w-full">
         <img
           src={project.image}
           alt={project.title}
@@ -88,8 +84,20 @@ export function ProgettiEvidenza() {
   // Seleziona 9 immagini per i progetti (ordine statico)
   const projects = useMemo(() => {
     const selected = PROJECT_IMAGES.slice(0, 9);
+    const trivellazioniImages = [
+      "WhatsApp Image 2026-01-12 at 20.52.09 (1).webp",
+      "WhatsApp Image 2026-01-12 at 20.52.09 (2).webp",
+      "WhatsApp Image 2026-01-12 at 20.52.09 (3).webp",
+      "WhatsApp Image 2026-01-12 at 20.52.09 (4).webp",
+      "WhatsApp Image 2026-01-12 at 20.52.09.webp",
+    ];
+    const cantieriImages = [
+      "WhatsApp Image 2026-01-21 at 10.25.50 (2).jpeg",
+      "WhatsApp Image 2026-01-21 at 10.36.46.jpeg",
+      "WhatsApp Image 2024-07-04 at 12.48.36.jpeg",
+    ];
 
-    const categories = ["Infrastrutture", "Edilizia Civile", "Opere Pubbliche"];
+    const categories = ["Trivellazioni", "Cantieri vari", "Edilizia"];
     const titles = [
       "Ponte Autostradale A1",
       "Grattacielo Residenziale Milano",
@@ -113,6 +121,12 @@ export function ProgettiEvidenza() {
       "Sondaggi geognostici per centro direzionale",
     ];
 
+    const categoryCounts: Record<string, number> = {
+      Trivellazioni: 0,
+      "Cantieri vari": 0,
+      Edilizia: 0,
+    };
+
     return selected.map((image, index) => {
       // Seleziona 3 immagini per il carosello (quella principale + 2 altre)
       const imageIndex = index;
@@ -120,13 +134,82 @@ export function ProgettiEvidenza() {
       const image2 = `/compressjpeg0-imprefond/${selected[(imageIndex + 3) % selected.length]}`;
       const image3 = `/compressjpeg0-imprefond/${selected[(imageIndex + 6) % selected.length]}`;
 
-      return {
-        image: image1,
-        images: [image1, image2, image3],
-        category: categories[index % categories.length],
-        title: titles[index],
-        description: descriptions[index],
+      const category = categories[index % categories.length];
+      const categoryIndex = categoryCounts[category];
+      const trivellazioniIndex = categoryIndex % trivellazioniImages.length;
+      const trivellazioniPath = encodeURI(
+        `/galleria-chiangiano/${trivellazioniImages[trivellazioniIndex]}`
+      );
+      const trivellazioniImagesSet = [
+        trivellazioniPath,
+        encodeURI(
+          `/galleria-chiangiano/${trivellazioniImages[(trivellazioniIndex + 1) % trivellazioniImages.length]}`
+        ),
+        encodeURI(
+          `/galleria-chiangiano/${trivellazioniImages[(trivellazioniIndex + 2) % trivellazioniImages.length]}`
+        ),
+      ];
+      const cantieriIndex = categoryIndex % cantieriImages.length;
+      const isCantieriFolder = (name: string) =>
+        name === "projects.jpeg" || name.includes("2024-07-04");
+      const cantieriBase = isCantieriFolder(cantieriImages[cantieriIndex])
+        ? "/CANTIERE TAI E VALLE DI CADORE"
+        : "/new-images";
+      const galleriaProjectImages = [
+        "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09.webp",
+        "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (1).webp",
+        "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (2).webp",
+        "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (3).webp",
+        "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (4).webp",
+      ];
+      const isGalleria = index === 6; // Replace "Ospedale Regionale" with Galleria
+
+      const cantieriPath = encodeURI(
+        `${cantieriBase}/${cantieriImages[cantieriIndex]}`
+      );
+      const cantieriImagesSet = [
+        cantieriPath,
+        encodeURI(
+          `${
+            isCantieriFolder(
+              cantieriImages[(cantieriIndex + 1) % cantieriImages.length]
+            )
+              ? "/CANTIERE TAI E VALLE DI CADORE"
+              : "/new-images"
+          }/${cantieriImages[(cantieriIndex + 1) % cantieriImages.length]}`
+        ),
+        encodeURI(
+          `${
+            isCantieriFolder(
+              cantieriImages[(cantieriIndex + 2) % cantieriImages.length]
+            )
+              ? "/CANTIERE TAI E VALLE DI CADORE"
+              : "/new-images"
+          }/${cantieriImages[(cantieriIndex + 2) % cantieriImages.length]}`
+        ),
+      ];
+
+      const project = {
+        image: isGalleria
+          ? galleriaProjectImages[0]
+          : category === "Trivellazioni"
+            ? trivellazioniPath
+            : category === "Cantieri vari"
+              ? cantieriPath
+              : image1,
+        images: isGalleria
+            ? galleriaProjectImages
+            : category === "Trivellazioni"
+            ? trivellazioniImagesSet
+            : category === "Cantieri vari"
+              ? cantieriImagesSet
+            : [image1, image2, image3],
+        category,
+        title: isGalleria ? "Galleria Chiangiano" : titles[index],
+        description: isGalleria ? "Consolidamento tunnel e messa in sicurezza" : descriptions[index],
       };
+      categoryCounts[category] += 1;
+      return project;
     });
   }, []);
 
@@ -165,7 +248,10 @@ export function ProgettiEvidenza() {
       </div>
 
       {/* Dialog con carosello foto */}
-      <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={(open) => !open && setSelectedProject(null)}
+      >
         <DialogContent className="max-w-[90vw] w-full min-w-[50vw]">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">

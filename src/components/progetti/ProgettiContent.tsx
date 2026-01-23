@@ -58,6 +58,25 @@ const descriptions = [
 // Crea progetti con ordine statico iniziale
 const createProjects = (images: readonly string[]): Project[] => {
   const selected = images.slice(0, 9);
+  const trivellazioniImages = [
+    "WhatsApp Image 2026-01-12 at 20.52.09 (1).webp",
+    "WhatsApp Image 2026-01-12 at 20.52.09 (2).webp",
+    "WhatsApp Image 2026-01-12 at 20.52.09 (3).webp",
+    "WhatsApp Image 2026-01-12 at 20.52.09 (4).webp",
+    "WhatsApp Image 2026-01-12 at 20.52.09.webp",
+  ];
+  const cantieriImages = [
+    "WhatsApp Image 2026-01-21 at 10.25.50 (2).jpeg",
+    "WhatsApp Image 2026-01-21 at 10.36.46.jpeg",
+    "WhatsApp Image 2024-07-04 at 12.48.36.jpeg",
+  ];
+
+  const categoryCounts: Record<string, number> = {
+    Trivellazioni: 0,
+    "Cantieri vari": 0,
+    Edilizia: 0,
+  };
+
   return selected.map((image, index) => {
     // Seleziona 3 immagini per il carosello (quella principale + 2 altre)
     const imageIndex = index;
@@ -65,13 +84,71 @@ const createProjects = (images: readonly string[]): Project[] => {
     const image2 = `/compressjpeg0-imprefond/${selected[(imageIndex + 3) % selected.length]}`;
     const image3 = `/compressjpeg0-imprefond/${selected[(imageIndex + 6) % selected.length]}`;
 
-    return {
-      image: image1,
-      images: [image1, image2, image3],
-      category: categories[index % categories.length],
+    const category = categories[index % categories.length];
+    const categoryIndex = categoryCounts[category];
+    const trivellazioniIndex = categoryIndex % trivellazioniImages.length;
+    const trivellazioniPath = encodeURI(
+      `/galleria-chiangiano/${trivellazioniImages[trivellazioniIndex]}`
+    );
+    const trivellazioniImagesSet = [
+      trivellazioniPath,
+      encodeURI(
+        `/galleria-chiangiano/${trivellazioniImages[(trivellazioniIndex + 1) % trivellazioniImages.length]}`
+      ),
+      encodeURI(
+        `/galleria-chiangiano/${trivellazioniImages[(trivellazioniIndex + 2) % trivellazioniImages.length]}`
+      ),
+    ];
+    const cantieriIndex = categoryIndex % cantieriImages.length;
+    const isCantieriFolder = (name: string) =>
+      name === "projects.jpeg" || name.includes("2024-07-04");
+    const cantieriBase = isCantieriFolder(cantieriImages[cantieriIndex])
+      ? "/CANTIERE TAI E VALLE DI CADORE"
+      : "/new-images";
+    const cantieriPath = encodeURI(
+      `${cantieriBase}/${cantieriImages[cantieriIndex]}`
+    );
+    const cantieriImagesSet = [
+      cantieriPath,
+      encodeURI(
+        `${
+          isCantieriFolder(
+            cantieriImages[(cantieriIndex + 1) % cantieriImages.length]
+          )
+            ? "/CANTIERE TAI E VALLE DI CADORE"
+            : "/new-images"
+        }/${cantieriImages[(cantieriIndex + 1) % cantieriImages.length]}`
+      ),
+      encodeURI(
+        `${
+          isCantieriFolder(
+            cantieriImages[(cantieriIndex + 2) % cantieriImages.length]
+          )
+            ? "/CANTIERE TAI E VALLE DI CADORE"
+            : "/new-images"
+        }/${cantieriImages[(cantieriIndex + 2) % cantieriImages.length]}`
+      ),
+    ];
+
+    const project = {
+      image:
+        category === "Trivellazioni"
+          ? trivellazioniPath
+          : category === "Cantieri vari"
+            ? cantieriPath
+            : image1,
+      images:
+        category === "Trivellazioni"
+          ? trivellazioniImagesSet
+          : category === "Cantieri vari"
+            ? cantieriImagesSet
+          : [image1, image2, image3],
+      category,
       title: titles[index],
       description: descriptions[index],
     };
+    categoryCounts[category] += 1;
+    return project;
   });
 };
 
