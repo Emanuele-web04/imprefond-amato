@@ -1,5 +1,4 @@
-import type { MetadataRoute } from "next";
-import { headers } from "next/headers";
+export const dynamic = "force-dynamic";
 
 // Domini supportati
 const DOMAINS = {
@@ -9,7 +8,8 @@ const DOMAINS = {
 
 const DEFAULT_DOMAIN = DOMAINS.IT;
 
-function getCurrentDomain(host: string): string {
+function getCurrentDomain(host: string | null): string {
+    if (!host) return DEFAULT_DOMAIN;
     if (host.includes(DOMAINS.EU)) return DOMAINS.EU;
     if (host.includes(DOMAINS.IT)) return DOMAINS.IT;
     return DEFAULT_DOMAIN;
@@ -17,7 +17,7 @@ function getCurrentDomain(host: string): string {
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
     const headersList = await headers();
-    const host = headersList.get("host") || DEFAULT_DOMAIN;
+    const host = headersList.get("x-forwarded-host") || headersList.get("host");
     const currentDomain = getCurrentDomain(host);
     const baseUrl = `https://${currentDomain}`;
 

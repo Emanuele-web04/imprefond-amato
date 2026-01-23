@@ -5,6 +5,8 @@ import { geistSans, spaceGrotesk } from "../utils/fonts";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 
+export const dynamic = "force-dynamic";
+
 // Domini supportati
 const DOMAINS = {
   EU: "imprefondamato.eu",
@@ -14,7 +16,8 @@ const DOMAINS = {
 const DEFAULT_DOMAIN = DOMAINS.IT;
 
 // Funzione helper per ottenere il dominio corrente
-export function getCurrentDomain(host: string): string {
+export function getCurrentDomain(host: string | null): string {
+  if (!host) return DEFAULT_DOMAIN;
   if (host.includes(DOMAINS.EU)) return DOMAINS.EU;
   if (host.includes(DOMAINS.IT)) return DOMAINS.IT;
   return DEFAULT_DOMAIN;
@@ -22,7 +25,8 @@ export function getCurrentDomain(host: string): string {
 
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = await headers();
-  const host = headersList.get("host") || DEFAULT_DOMAIN;
+  // x-forwarded-host è più affidabile su Vercel
+  const host = headersList.get("x-forwarded-host") || headersList.get("host");
   const currentDomain = getCurrentDomain(host);
   const baseUrl = `https://${currentDomain}`;
 
