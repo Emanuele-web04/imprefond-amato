@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { geistSans, spaceGrotesk } from "../utils/fonts";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Imprefond",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${spaceGrotesk.variable} font-space-grotesk! tracking-tighter antialiased`}
       >
+        <Analytics />
         {children}
         <Footer />
       </body>
