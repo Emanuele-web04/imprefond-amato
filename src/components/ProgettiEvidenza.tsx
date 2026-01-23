@@ -80,16 +80,9 @@ export function ProgettiEvidenza() {
     ];
 
     const categories = ["Trivellazioni", "Cantieri vari", "Edilizia"];
-    const titles = [
-      "Ponte Autostradale A1",
-      "Grattacielo Residenziale Milano",
-      "Metropolitana Linea M5",
-      "Centro Commerciale Nord",
-      "Stabilimento Industriale",
-      "Ospedale Regionale",
-      "Tunnel Autostradale",
-      "Complesso Residenziale",
-      "Centro Direzionale",
+    const ediliziaImages = [
+      "/cortina-2-2025/_DSC4977.jpg",
+      "/cortina-2-2025/_DSC4978.jpg",
     ];
 
     const categoryCounts: Record<string, number> = {
@@ -107,23 +100,52 @@ export function ProgettiEvidenza() {
 
       const category = categories[index % categories.length];
       const categoryIndex = categoryCounts[category];
+
+      // LOGICA TRIVELLAZIONI
       const trivellazioniIndex = categoryIndex % trivellazioniImages.length;
       const trivellazioniPath = encodeURI(trivellazioniImages[trivellazioniIndex]);
       const trivellazioniImagesSet = [
         trivellazioniPath,
-        encodeURI(
-          trivellazioniImages[(trivellazioniIndex + 1) % trivellazioniImages.length]
-        ),
-        encodeURI(
-          trivellazioniImages[(trivellazioniIndex + 2) % trivellazioniImages.length]
-        ),
+        encodeURI(trivellazioniImages[(trivellazioniIndex + 1) % trivellazioniImages.length]),
+        encodeURI(trivellazioniImages[(trivellazioniIndex + 2) % trivellazioniImages.length]),
       ];
+
+      // LOGICA CANTIERI VARI
       const cantieriIndex = categoryIndex % cantieriImages.length;
       const isCantieriFolder = (name: string) =>
         name === "projects.jpeg" || name.includes("2024-07-04");
       const cantieriBase = isCantieriFolder(cantieriImages[cantieriIndex])
         ? "/CANTIERE TAI E VALLE DI CADORE"
         : "/new-images";
+      const cantieriPathPrefix = isCantieriFolder(cantieriImages[cantieriIndex])
+        ? "/CANTIERE TAI E VALLE DI CADORE"
+        : "/new-images";
+
+      const cantieriPath = encodeURI(`${cantieriBase}/${cantieriImages[cantieriIndex]}`);
+      const lastTaiImage = encodeURI("/CANTIERE TAI E VALLE DI CADORE/WhatsApp Image 2024-07-04 at 12.48.37 (3).jpeg");
+
+      const cantieriImagesSet = [
+        cantieriPath,
+        encodeURI(
+          `${
+            isCantieriFolder(cantieriImages[(cantieriIndex + 1) % cantieriImages.length])
+              ? "/CANTIERE TAI E VALLE DI CADORE"
+              : "/new-images"
+          }/${cantieriImages[(cantieriIndex + 1) % cantieriImages.length]}`
+        ),
+        lastTaiImage, // Usa l'ultima del cantiere tai come richiesto
+      ];
+
+      // LOGICA EDILIZIA
+      const ediliziaIndex = categoryIndex % ediliziaImages.length;
+      const ediliziaPath = encodeURI(ediliziaImages[ediliziaIndex]);
+      const lastGalleriaImage = encodeURI("/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (4).webp");
+      const ediliziaImagesSet = [
+        ediliziaPath,
+        encodeURI(ediliziaImages[(ediliziaIndex + 1) % ediliziaImages.length]),
+        lastGalleriaImage, // Usa l'ultima della galleria come richiesto
+      ];
+
       const galleriaProjectImages = [
         "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09.webp",
         "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (1).webp",
@@ -133,31 +155,6 @@ export function ProgettiEvidenza() {
       ];
       const isGalleria = index === 6; // Replace "Ospedale Regionale" with Galleria
 
-      const cantieriPath = encodeURI(
-        `${cantieriBase}/${cantieriImages[cantieriIndex]}`
-      );
-      const cantieriImagesSet = [
-        cantieriPath,
-        encodeURI(
-          `${
-            isCantieriFolder(
-              cantieriImages[(cantieriIndex + 1) % cantieriImages.length]
-            )
-              ? "/CANTIERE TAI E VALLE DI CADORE"
-              : "/new-images"
-          }/${cantieriImages[(cantieriIndex + 1) % cantieriImages.length]}`
-        ),
-        encodeURI(
-          `${
-            isCantieriFolder(
-              cantieriImages[(cantieriIndex + 2) % cantieriImages.length]
-            )
-              ? "/CANTIERE TAI E VALLE DI CADORE"
-              : "/new-images"
-          }/${cantieriImages[(cantieriIndex + 2) % cantieriImages.length]}`
-        ),
-      ];
-
       const project = {
         image: isGalleria
           ? galleriaProjectImages[0]
@@ -165,16 +162,16 @@ export function ProgettiEvidenza() {
             ? trivellazioniPath
             : category === "Cantieri vari"
               ? cantieriPath
-              : image1,
+              : ediliziaPath, // Usa logic edilizia per il resto
         images: isGalleria
-            ? galleriaProjectImages
-            : category === "Trivellazioni"
+          ? galleriaProjectImages
+          : category === "Trivellazioni"
             ? trivellazioniImagesSet
             : category === "Cantieri vari"
               ? cantieriImagesSet
-            : [image1, image2, image3],
+              : ediliziaImagesSet,
         category,
-        title: category, // Title is now the Category
+        title: category, // Title is now ONLY the Category
         description: "", // Description removed
       };
       categoryCounts[category] += 1;

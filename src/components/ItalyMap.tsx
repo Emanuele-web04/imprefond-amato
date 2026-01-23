@@ -3,6 +3,8 @@
 import { MapContainer, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
+import { useEffect, useState } from "react";
+
 interface CityMarker {
   name: string;
   coordinates: [number, number];
@@ -24,8 +26,29 @@ const italianCities: CityMarker[] = [
   { name: "Chianciano", coordinates: [11.81361, 43.04444], projects: 1 },
 ];
 
+const italyCenter: [number, number] = [41.9, 12.49];
+
 export default function ItalyMapLeaflet() {
-  const italyCenter: [number, number] = [41.9, 12.49];
+  const [showMap, setShowMap] = useState(false);
+
+  useEffect(() => {
+    // Un piccolo delay assicura che il contenitore DOM sia pronto prima di inizializzare Leaflet
+    const timer = setTimeout(() => setShowMap(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!showMap) {
+    return (
+      <div className="w-full mb-12">
+        <h3 className="text-xl font-medium text-black mb-4 text-left">
+          I Nostri Progetti in Italia
+        </h3>
+        <div className="h-[500px] w-full rounded-xl bg-[#f8fafc] border border-slate-200 flex items-center justify-center">
+          <p className="text-gray-400">Caricamento mappa...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full mb-12">
@@ -35,11 +58,11 @@ export default function ItalyMapLeaflet() {
 
       <div className="h-[500px] w-full rounded-xl overflow-hidden border border-slate-200 shadow-sm relative z-0">
         <MapContainer
+          key="italy-map-v2"
           center={italyCenter}
           zoom={6}
           scrollWheelZoom={false}
           className="h-full w-full bg-[#f8fafc]"
-          style={{ height: "100%", width: "100%" }}
         >
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"

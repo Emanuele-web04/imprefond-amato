@@ -46,6 +46,11 @@ const createProjects = (images: readonly string[]): Project[] => {
     "WhatsApp Image 2026-01-21 at 10.36.46.jpeg",
     "WhatsApp Image 2024-07-04 at 12.48.36.jpeg",
   ];
+  const ediliziaImages = [
+    "/cortina-2-2025/_DSC4977.jpg",
+    "/cortina-2-2025/_DSC4978.jpg",
+    "/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (3).webp"
+  ];
 
   const categoryCounts: Record<string, number> = {
     Trivellazioni: 0,
@@ -62,6 +67,8 @@ const createProjects = (images: readonly string[]): Project[] => {
 
     const category = categories[index % categories.length];
     const categoryIndex = categoryCounts[category];
+
+    // LOGICA TRIVELLAZIONI
     const trivellazioniIndex = categoryIndex % trivellazioniImages.length;
     const trivellazioniPath = encodeURI(trivellazioniImages[trivellazioniIndex]);
     const trivellazioniImagesSet = [
@@ -73,35 +80,41 @@ const createProjects = (images: readonly string[]): Project[] => {
         trivellazioniImages[(trivellazioniIndex + 2) % trivellazioniImages.length]
       ),
     ];
+
+    // LOGICA CANTIERI VARI
     const cantieriIndex = categoryIndex % cantieriImages.length;
     const isCantieriFolder = (name: string) =>
       name === "projects.jpeg" || name.includes("2024-07-04");
     const cantieriBase = isCantieriFolder(cantieriImages[cantieriIndex])
       ? "/CANTIERE TAI E VALLE DI CADORE"
       : "/new-images";
-    const cantieriPath = encodeURI(
-      `${cantieriBase}/${cantieriImages[cantieriIndex]}`
-    );
+    const cantieriPathPrefix = isCantieriFolder(cantieriImages[cantieriIndex])
+      ? "/CANTIERE TAI E VALLE DI CADORE"
+      : "/new-images";
+
+    const cantieriPath = encodeURI(`${cantieriBase}/${cantieriImages[cantieriIndex]}`);
+    const lastTaiImage = encodeURI("/CANTIERE TAI E VALLE DI CADORE/WhatsApp Image 2024-07-04 at 12.48.37 (3).jpeg");
+
     const cantieriImagesSet = [
       cantieriPath,
       encodeURI(
         `${
-          isCantieriFolder(
-            cantieriImages[(cantieriIndex + 1) % cantieriImages.length]
-          )
+          isCantieriFolder(cantieriImages[(cantieriIndex + 1) % cantieriImages.length])
             ? "/CANTIERE TAI E VALLE DI CADORE"
             : "/new-images"
         }/${cantieriImages[(cantieriIndex + 1) % cantieriImages.length]}`
       ),
-      encodeURI(
-        `${
-          isCantieriFolder(
-            cantieriImages[(cantieriIndex + 2) % cantieriImages.length]
-          )
-            ? "/CANTIERE TAI E VALLE DI CADORE"
-            : "/new-images"
-        }/${cantieriImages[(cantieriIndex + 2) % cantieriImages.length]}`
-      ),
+      lastTaiImage, // Usa l'ultima del cantiere tai come richiesto
+    ];
+
+    // LOGICA EDILIZIA
+    const ediliziaIndex = categoryIndex % ediliziaImages.length;
+    const ediliziaPath = encodeURI(ediliziaImages[ediliziaIndex]);
+    const lastGalleriaImage = encodeURI("/galleria-chiangiano/WhatsApp Image 2026-01-12 at 20.52.09 (4).webp");
+    const ediliziaImagesSet = [
+      ediliziaPath,
+      encodeURI(ediliziaImages[(ediliziaIndex + 1) % ediliziaImages.length]),
+      lastGalleriaImage, // Usa l'ultima della galleria come richiesto
     ];
 
     const project = {
@@ -110,13 +123,13 @@ const createProjects = (images: readonly string[]): Project[] => {
           ? trivellazioniPath
           : category === "Cantieri vari"
             ? cantieriPath
-            : image1,
+            : ediliziaPath,
       images:
         category === "Trivellazioni"
           ? trivellazioniImagesSet
           : category === "Cantieri vari"
             ? cantieriImagesSet
-          : [image1, image2, image3],
+            : ediliziaImagesSet,
       category,
       title: category,
       description: "",
