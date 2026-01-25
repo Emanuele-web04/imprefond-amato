@@ -1,9 +1,6 @@
 // Lista delle immagini per il carosello Hero (ultime 5 da cortina-2-2025)
 export const CAROUSEL_IMAGES = [
-  "_DSC4982.jpg",
-  "_DSC4996.jpg",
-  "_DSC4999.jpg",
-  "_DSC4979.jpg",
+  "hero-home.jpg",
 ] as const;
 
 // Lista delle immagini per progetti e altre sezioni

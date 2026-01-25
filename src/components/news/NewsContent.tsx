@@ -5,10 +5,7 @@ import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "motion/react";
 import { useRef, useState } from "react";
 import { useInView } from "motion/react";
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   Carousel,
   CarouselContent,
@@ -29,11 +26,22 @@ interface NewsItem {
 
 // Cortina images
 const cortinaImages = [
-  "/cortina-1-2025/_DSC4946.jpg",
-  "/cortina-1-2025/_DSC4947.jpg",
-  "/cortina-1-2025/_DSC4948.jpg",
-  "/cortina-1-2025/_DSC4949.jpg",
-  "/cortina-1-2025/_DSC4950.jpg",
+  "/cortina-3-2025/_DSC4952.jpg",
+  "/cortina-3-2025/_DSC4953.jpg",
+  "/cortina-3-2025/_DSC4956.jpg",
+  "/cortina-3-2025/_DSC4959.jpg",
+  "/cortina-3-2025/_DSC4961.jpg",
+  "/cortina-3-2025/_DSC4966.jpg",
+  "/cortina-3-2025/_DSC4974.jpg",
+  "/cortina-3-2025/_DSC4976.jpg",
+  "/cortina-3-2025/_DSC4980.jpg",
+  "/cortina-3-2025/_DSC4982.jpg",
+  "/cortina-3-2025/_DSC4985.jpg",
+  "/cortina-3-2025/_DSC4988.jpg",
+  "/cortina-3-2025/_DSC4989.jpg",
+  "/cortina-3-2025/_DSC4990.jpg",
+  "/cortina-3-2025/_DSC4991.jpg",
+  "/cortina-3-2025/_DSC5001.jpg",
 ];
 
 // Galleria Chiangiano images
@@ -43,13 +51,12 @@ const galleriaImages = [
   "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09 (2).webp",
   "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09 (3).webp",
   "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09 (4).webp",
+  "/foto tagliate/Manutenzione galleria/manutenzione-galleria/_DSC5010.jpg",
+  "/foto tagliate/Manutenzione galleria/manutenzione-galleria/_DSC5011.jpg",
 ];
 
 // SS51 images
-const ss51Images = [
-  "/SS51/ss51-1.jpeg",
-  "/SS51/ss51-2.jpeg",
-];
+const ss51Images = ["/SS51/ss51-1.jpeg", "/SS51/ss51-2.jpeg"];
 
 const newsItems: NewsItem[] = [
   {
@@ -60,26 +67,26 @@ const newsItems: NewsItem[] = [
       "Partecipazione ai lavori per le Olimpiadi Invernali Milano Cortina 2026.",
     fullContent:
       "Imprefond è orgogliosa di partecipare ai lavori per le Olimpiadi Invernali Milano Cortina 2026. Il nostro team sta realizzando fondazioni speciali e opere di consolidamento per le infrastrutture olimpiche, contribuendo a questo importante evento internazionale che porterà l'Italia al centro del mondo dello sport invernale.",
-    image: "/cortina-2-2025/_DSC4955.jpg",
+    image: "/cortina-3-2025/_DSC4953.jpg",
     carouselImages: cortinaImages,
   },
   {
     date: "2025",
-    location: "Teramo",
+    location: "Italia",
     title: "Manutenzione Galleria",
     excerpt:
       "Intervento di consolidamento strutturale per la Galleria Chiangiano.",
     fullContent:
       "Imprefond prosegue il suo impegno nelle grandi opere infrastrutturali con l'intervento presso la Galleria Chiangiano. Il progetto prevede complessi lavori di consolidamento e messa in sicurezza del tunnel, utilizzando tecnologie avanzate per garantire la stabilità della struttura e la sicurezza della viabilità. L'opera rappresenta un tassello fondamentale per il potenziamento della rete viaria locale.",
-    image: "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09.webp",
+    image:
+      "/foto tagliate/Manutenzione galleria/manutenzione-galleria/WhatsApp Image 2026-01-12 at 20.52.09.webp",
     carouselImages: galleriaImages,
   },
   {
     date: "2025",
-    location: "Alemagna",
-    title: "S.S.51",
-    excerpt:
-      "Progetto S.S.51 - Lavori di fondazione e consolidamento.",
+    location: "Tai Di Cadore",
+    title: "S.S.51 di Alemagna",
+    excerpt: "Progetto S.S.51 - Lavori di fondazione e consolidamento.",
     fullContent:
       "Imprefond è impegnata nel progetto S.S.51, realizzando opere di fondazione speciale e consolidamento strutturale. Il progetto rappresenta un importante intervento nel settore delle infrastrutture, dimostrando la nostra capacità di affrontare progetti complessi con competenza e professionalità.",
     image: "/SS51/ss51-1.jpeg",
@@ -109,11 +116,11 @@ function createSlug(title: string): string {
     "Manutenzione Galleria": "galleria-chiangiano",
     "S.S.51": "ss51",
   };
-  
+
   if (slugMap[title]) {
     return slugMap[title];
   }
-  
+
   const mainTitle = title.split("-")[0].trim();
   return mainTitle
     .toLowerCase()
@@ -141,8 +148,8 @@ function NewsArticle({ item }: NewsArticleProps) {
         className="relative w-full h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[70vh]"
       >
         {item.carouselImages ? (
-          <div 
-            className="w-full h-full cursor-pointer" 
+          <div
+            className="w-full h-full cursor-pointer"
             onClick={() => setDialogOpen(true)}
           >
             <img
@@ -177,9 +184,9 @@ function NewsArticle({ item }: NewsArticleProps) {
             <span>{item.location}</span>
           </div>
         </div>
-        
+
         <h2 className="text-title mb-4 sm:mb-5 md:mb-6">{item.title}</h2>
-        
+
         <p className="text-description leading-relaxed">{item.fullContent}</p>
       </motion.div>
 

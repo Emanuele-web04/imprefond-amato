@@ -42,18 +42,18 @@ export function Hero() {
         <div className="relative w-full h-full overflow-hidden">
           <motion.div
             className="flex h-full"
-            animate={{
-              x: carouselConfig.keyframes,
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: carouselConfig.totalDuration,
-                ease: "easeInOut",
-                times: carouselConfig.times,
-              },
-            }}
+            // animate={{
+            //   x: carouselConfig.keyframes,
+            // }}
+            // transition={{
+            //   x: {
+            //     repeat: Infinity,
+            //     repeatType: "loop",
+            //     duration: carouselConfig.totalDuration,
+            //     ease: "easeInOut",
+            //     times: carouselConfig.times,
+            //   },
+            // }}
             style={{ width: `${carouselConfig.infiniteImages.length * 100}%` }}
           >
             {carouselConfig.infiniteImages.map((image, index) => (
@@ -65,7 +65,7 @@ export function Hero() {
                 }}
               >
                 <img
-                  src={`${CAROUSEL_CONFIG.imagePath}/${image}`}
+                  src={`/hero-home.jpg`}
                   alt={`Imprefond ${index + 1}`}
                   className="w-full h-full object-cover"
                 />

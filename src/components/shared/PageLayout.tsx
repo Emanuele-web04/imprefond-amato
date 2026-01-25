@@ -15,6 +15,7 @@ interface PageLayoutProps {
   defaultActiveId?: string;
   children: React.ReactNode;
   showRisultati?: boolean;
+  imagefit?: "cover" | "contain";
 }
 
 export function PageLayout({
@@ -25,11 +26,12 @@ export function PageLayout({
   defaultActiveId,
   children,
   showRisultati = true,
+  imagefit = "cover",
 }: PageLayoutProps) {
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <PageHero title={title} image={heroImage} />
+      <PageHero title={title} image={heroImage} imagefit={imagefit} />
 
       <Breadcrumbs items={breadcrumbItems} />
 

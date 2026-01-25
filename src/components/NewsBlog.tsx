@@ -31,8 +31,8 @@ const newsItems: NewsItem[] = [
   },
   {
     date: "2025",
-    location: "Alemagna",
-    title: "S.S.51",
+    location: "Tai Di Cadore",
+    title: "S.S.51 di Alemagna",
     excerpt:
       "Progetto S.S.51 - Lavori di fondazione e consolidamento.",
     link: "/news#ss51",

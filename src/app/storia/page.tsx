@@ -18,11 +18,12 @@ export default function StoriaPage() {
   return (
     <PageLayout
       title="La Storia di Imprefond"
-      heroImage="/history-imprefond (1).png"
+      heroImage="/CANTIERE TAI E VALLE DI CADORE/20250917_090247.jpg"
       breadcrumbItems={[{ label: "La Storia di Imprefond" }]}
       navItems={storiaNavItems}
       defaultActiveId="chi-siamo"
       showRisultati={false}
+      imagefit="contain"
     >
       <MainContent />
     </PageLayout>

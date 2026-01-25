@@ -12,7 +12,7 @@ export default function CertificazioniPage() {
   return (
     <PageLayout
       title="Certificazioni"
-      heroImage="/cortina-2-2025/_DSC4996.jpg"
+      heroImage="/new-images/WhatsApp Image 2026-01-21 at 10.30.04.jpeg"
       breadcrumbItems={[{ label: "Certificazioni" }]}
       navItems={certificazioniNavItems}
       defaultActiveId="soa"

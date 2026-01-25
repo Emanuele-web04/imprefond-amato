@@ -27,7 +27,8 @@ export function Timeline() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [contractDialogOpen, setContractDialogOpen] = useState(false);
-  const [certificazioniDialogOpen, setCertificazioniDialogOpen] = useState(false);
+  const [certificazioniDialogOpen, setCertificazioniDialogOpen] =
+    useState(false);
   const [tunnelDialogOpen, setTunnelDialogOpen] = useState(false);
 
   // Contract images for the carousel (1950) - using pre-rotated images
@@ -67,7 +68,7 @@ export function Timeline() {
     "1975": oldStoryImages[3], // Moved from 1995
     "1995": "/pngs/9.jpg", // New image for Innovazione Tecnologica
     "2010": "/certificazioni-amato/ISO 9001 IMPREFOND (2)-1.png",
-    "2022": "/imprefond_images/journal1.webp", // Changed to use journal1 instead of tunnel-comacchio-article
+    "2022": "/imprefond_images/journal2.webp", // Changed to use journal1 instead of tunnel-comacchio-article
     "2026": "/cortina-2-2025/_DSC4955.jpg",
   };
 
@@ -122,10 +123,27 @@ export function Timeline() {
                 {/* Immagine banner */}
                 {event.year === "1950" ? (
                   <div className="w-full mb-6">
-                    <div 
-                      className="cursor-pointer rounded-lg overflow-hidden"
+                    {/* Desktop xl+: Show all 3 contracts side by side */}
+                    <div className="hidden xl:grid xl:grid-cols-3 gap-4">
+                      {contractImages.map((image, index) => (
+                        <div
+                          key={index}
+                          className="cursor-pointer rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                          onClick={() => setContractDialogOpen(true)}
+                        >
+                          <img
+                            src={image}
+                            alt={`Contratto ${index + 1}`}
+                            className="w-full h-auto"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    {/* Mobile/Tablet: Show single image that opens carousel */}
+                    <div
+                      className="xl:hidden cursor-pointer rounded-lg overflow-hidden"
                       onClick={() => setContractDialogOpen(true)}
-                      style={{ maxWidth: '300px' }}
+                      style={{ maxWidth: "300px" }}
                     >
                       <img
                         src={event.image}
@@ -136,9 +154,9 @@ export function Timeline() {
                   </div>
                 ) : event.year === "1975" ? (
                   <div className="w-full mb-6">
-                    <div 
+                    <div
                       className="rounded-lg overflow-hidden"
-                      style={{ maxWidth: '300px' }}
+                      style={{ maxWidth: "300px" }}
                     >
                       <ImageDialog
                         src={event.image}
@@ -153,7 +171,7 @@ export function Timeline() {
                     {/* Desktop xl+: Show all 3 certificates side by side */}
                     <div className="hidden xl:grid xl:grid-cols-3 gap-4">
                       {certificazioniImages.map((image, index) => (
-                        <div 
+                        <div
                           key={index}
                           className="cursor-pointer rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
                           onClick={() => setCertificazioniDialogOpen(true)}
@@ -167,10 +185,10 @@ export function Timeline() {
                       ))}
                     </div>
                     {/* Mobile/Tablet: Show single image that opens carousel */}
-                    <div 
+                    <div
                       className="xl:hidden cursor-pointer rounded-lg overflow-hidden"
                       onClick={() => setCertificazioniDialogOpen(true)}
-                      style={{ maxWidth: '300px' }}
+                      style={{ maxWidth: "300px" }}
                     >
                       <img
                         src={event.image}
@@ -181,7 +199,7 @@ export function Timeline() {
                   </div>
                 ) : event.year === "2022" ? (
                   <div className="w-full mb-3 sm:mb-4">
-                    <div 
+                    <div
                       className="cursor-pointer rounded-lg overflow-hidden"
                       onClick={() => setTunnelDialogOpen(true)}
                     >
@@ -246,7 +264,10 @@ export function Timeline() {
       </Dialog>
 
       {/* Carousel Dialog for Certificazioni Images */}
-      <Dialog open={certificazioniDialogOpen} onOpenChange={setCertificazioniDialogOpen}>
+      <Dialog
+        open={certificazioniDialogOpen}
+        onOpenChange={setCertificazioniDialogOpen}
+      >
         <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl max-h-[98vh] sm:max-h-[95vh] w-auto h-auto p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
           <div className="relative w-full h-full flex flex-col items-center justify-center">
             <Carousel className="w-full" opts={{ loop: true }}>

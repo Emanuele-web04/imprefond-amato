@@ -6,9 +6,10 @@ import { motion } from "motion/react";
 interface PageHeroProps {
   title: string;
   image: string;
+  imagefit?: "cover" | "contain";
 }
 
-export function PageHero({ title, image }: PageHeroProps) {
+export function PageHero({ title, image, imagefit = "cover" }: PageHeroProps) {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Single Image Background */}
@@ -16,7 +17,7 @@ export function PageHero({ title, image }: PageHeroProps) {
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover"
+          className={`w-full h-full ${imagefit === "contain" ? "object-contain" : "object-cover"}`}
         />
         {/* Black overlay for text readability */}
         <div className="absolute inset-0 bg-black/40" />

@@ -14,7 +14,7 @@ export default function ProgettiPage() {
   return (
     <PageLayout
       title="Progetti"
-      heroImage="/cortina-1-2025/_DSC4950.jpg"
+      heroImage="/cortina-2-2025/_DSC4956.jpg"
       breadcrumbItems={[{ label: "Progetti" }]}
       navItems={progettiNavItems}
       defaultActiveId="panoramica"
