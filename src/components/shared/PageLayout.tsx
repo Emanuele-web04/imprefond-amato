@@ -16,6 +16,7 @@ interface PageLayoutProps {
   children: React.ReactNode;
   showRisultati?: boolean;
   imagefit?: "cover" | "contain";
+  mobileTitleCentered?: boolean;
 }
 
 export function PageLayout({
@@ -27,11 +28,17 @@ export function PageLayout({
   children,
   showRisultati = true,
   imagefit = "cover",
+  mobileTitleCentered = false,
 }: PageLayoutProps) {
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      <PageHero title={title} image={heroImage} imagefit={imagefit} />
+      <PageHero
+        title={title}
+        image={heroImage}
+        imagefit={imagefit}
+        mobileTitleCentered={mobileTitleCentered}
+      />
 
       <Breadcrumbs items={breadcrumbItems} />
 

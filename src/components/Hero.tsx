@@ -25,7 +25,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="text-center mb-auto md:mb-0 mt-30 md:mt-0"
+          className="text-center mb-auto md:mb-0 mt-25 md:mt-0"
         >
           <h1 className="text-4xl h-full md:text-5xl lg:text-6xl font-medium tracking-tighter text-blue-950  md:text-white drop-shadow-2xl">
             Migliorando l&apos;Italia costruendo

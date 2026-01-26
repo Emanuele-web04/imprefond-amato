@@ -24,6 +24,7 @@ export default function StoriaPage() {
       defaultActiveId="chi-siamo"
       showRisultati={false}
       imagefit="contain"
+      mobileTitleCentered={true}
     >
       <MainContent />
     </PageLayout>
