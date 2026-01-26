@@ -17,6 +17,7 @@ export default function NewsPage() {
       navItems={newsNavItems}
       defaultActiveId="news-0"
       showRisultati={false}
+      imagefit="contain"
     >
       <NewsContent />
     </PageLayout>

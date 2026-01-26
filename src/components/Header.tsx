@@ -28,14 +28,11 @@ export function Header() {
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <Link
-              href="/"
-              className="bg-blue-950 p-0.5 shadow-2xl block"
-            >
+            <Link href="/" className="bg-blue-950 p-0.5 shadow-2xl block">
               <img
                 src="/imprefond-logo.png"
                 alt="Imprefond F.lli Amato SRL"
@@ -46,8 +43,8 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <motion.nav
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="hidden lg:block"
           >
@@ -72,11 +69,13 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <motion.button
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden text-white p-2 z-50 relative"
+            className={`lg:hidden p-2 z-50 relative ${
+              mobileMenuOpen ? "text-white" : "text-blue-950 md:text-white"
+            }`}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -92,9 +91,9 @@ export function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed inset-0 bg-blue-950 z-40 lg:hidden"
           >

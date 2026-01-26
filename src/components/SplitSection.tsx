@@ -41,11 +41,11 @@ export function SplitSection({
         initial={{ opacity: 0, x: imageSide === "left" ? -50 : 50 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`relative w-full md:w-1/2 h-64 md:h-screen ${
+        className={`relative w-full md:w-1/2 h-100 md:h-screen ${
           imageSide === "left" ? "order-1 md:order-1" : "order-1 md:order-2"
         }`}
       >
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img src={image} alt={title} className="w-full object-top h-full object-cover" />
       </motion.div>
 
       {/* Contenuto Testuale */}

@@ -21,7 +21,7 @@ export function FotoCarosello({ images }: FotoCaroselloProps) {
           {images.map((image, index) => (
             <CarouselItem key={index}>
               <div className="flex items-center justify-center p-1 sm:p-2 md:p-4">
-                <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center">
+                <div className="relative w-full h-[50vh] flex items-center justify-center">
                   <img
                     src={image}
                     alt={`Foto ${index + 1}`}
@@ -32,7 +32,7 @@ export function FotoCarosello({ images }: FotoCaroselloProps) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className="flex justify-center gap-4 mt-4">
+        <div className="flex justify-center gap-4 my-4">
           <CarouselPrevious className="relative left-0 translate-x-0 translate-y-0" />
           <CarouselNext className="relative right-0 translate-x-0 translate-y-0" />
         </div>

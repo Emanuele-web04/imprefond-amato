@@ -19,6 +19,7 @@ export default function ProgettiPage() {
       navItems={progettiNavItems}
       defaultActiveId="panoramica"
       showRisultati={false}
+      imagefit={"contain"}
     >
       <ProgettiContent />
     </PageLayout>

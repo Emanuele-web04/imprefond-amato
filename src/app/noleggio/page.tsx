@@ -25,6 +25,7 @@ export default function NoleggioPage() {
       navItems={noleggioNavItems}
       defaultActiveId="trivelle"
       showRisultati={false}
+      imagefit="contain"
     >
       <MainContent />
     </PageLayout>

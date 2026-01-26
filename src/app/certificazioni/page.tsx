@@ -17,6 +17,7 @@ export default function CertificazioniPage() {
       navItems={certificazioniNavItems}
       defaultActiveId="soa"
       showRisultati={false}
+      imagefit="contain"
     >
       <MainContent />
     </PageLayout>

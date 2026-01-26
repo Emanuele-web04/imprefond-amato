@@ -20,7 +20,7 @@ export function PageHero({ title, image, imagefit = "cover" }: PageHeroProps) {
           className={`w-full h-full ${imagefit === "contain" ? "object-contain" : "object-cover"}`}
         />
         {/* Black overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 md:bg-black/40" />
       </div>
 
       {/* Center Title */}
@@ -29,9 +29,9 @@ export function PageHero({ title, image, imagefit = "cover" }: PageHeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="text-center"
+          className="text-center mb-auto md:mb-0 mt-30 md:mt-0"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter text-white drop-shadow-2xl">
+          <h1 className="text-4xl h-full md:text-5xl lg:text-6xl font-medium tracking-tighter text-blue-950  md:text-white drop-shadow-2xl">
             {title}
           </h1>
         </motion.div>

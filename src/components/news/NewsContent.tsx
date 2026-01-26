@@ -200,7 +200,7 @@ function NewsArticle({ item }: NewsArticleProps) {
                   {item.carouselImages.map((image, idx) => (
                     <CarouselItem key={idx}>
                       <div className="flex items-center justify-center p-1 sm:p-2 md:p-4">
-                        <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center">
+                        <div className="relative w-full h-[50vh] flex items-center justify-center">
                           <img
                             src={image}
                             alt={`${item.title} - ${idx + 1}`}
