@@ -32,7 +32,7 @@ export function ProjectCard({
   isInView = true,
 }: ProjectCardProps) {
   const aspectClass = aspectRatio === "3/4" ? "aspect-[3/4]" : "aspect-[4/3]";
-  
+
   const cardContent = (
     <div
       className={`relative group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-shadow ${className}`}
@@ -78,9 +78,9 @@ interface ProjectsGridProps {
   isInView?: boolean;
 }
 
-export function ProjectsGrid({ 
-  projects, 
-  aspectRatio = "3/4", 
+export function ProjectsGrid({
+  projects,
+  aspectRatio = "3/4",
   cardClassName = "",
   animated = false,
   isInView = true,
@@ -105,14 +105,15 @@ export function ProjectsGrid({
       </div>
 
       {/* Dialog con carosello foto */}
-      <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
-        <DialogContent className="sm:max-w-xl md:max-w-2xl lg:max-w-4xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">
-              {selectedProject?.title}
-            </DialogTitle>
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={(open) => !open && setSelectedProject(null)}
+      >
+        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+          <DialogHeader className="sr-only">
+            <DialogTitle>{selectedProject?.title}</DialogTitle>
           </DialogHeader>
-          <div className="mt-4">
+          <div className="relative w-full flex flex-col items-center justify-center">
             {selectedProject && (
               <FotoCarosello images={selectedProject.images} />
             )}
