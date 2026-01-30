@@ -22,14 +22,13 @@ export function ProgettiContent() {
     <>
       <ContentSection
         id="panoramica"
-        title="I Nostri Progetti"
+        title="I nostri progetti"
         content={
           <>
             <p>
-              Negli ultimi anni abbiamo completato centinaia di progetti in
-              tutta Italia, dalle infrastrutture più complesse alle opere
-              pubbliche di grande importanza. Ogni progetto è una testimonianza
-              della nostra esperienza e competenza.
+              Nel corso degli anni la nostra azienda ha portato a termine diversi lavori in tutta italia, dalle opere private
+              per edifici residenziali e non, a quelle pubbliche come consolidamenti infrastrutturali di edifici, ponti o
+              strade, più complesse ed importanti, accrescendo così la nostra esperienza e competenza nel settore.
             </p>
           </>
         }

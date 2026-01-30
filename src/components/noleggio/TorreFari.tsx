@@ -6,17 +6,12 @@ export function TorreFari() {
   return (
     <ContentSection
       id="torre-fari"
-      title="Torre Fari"
+      title="Torre Faro"
       content={
         <>
           <p>
-            Mettiamo a disposizione torri faro per l'illuminazione notturna dei
-            cantieri, garantendo visibilità ottimale e sicurezza durante i lavori
-            in orari serali.
-          </p>
-          <p>
-            Le nostre torri faro sono dotate di tecnologia LED ad alta efficienza
-            energetica e possono illuminare ampie aree di lavoro.
+            Siamo dotati di torri faro, utili per l'illuminazione notturna dei cantieri, garantendo visibilità ottimale che Vi
+            permetterà di lavorare in sicurezza.
           </p>
         </>
       }

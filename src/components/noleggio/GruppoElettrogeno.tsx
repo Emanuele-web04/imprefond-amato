@@ -6,17 +6,13 @@ export function GruppoElettrogeno() {
   return (
     <ContentSection
       id="gruppo-elettrogeno"
-      title="Gruppo Elettrogeno"
+      title="Gruppi Elettrogeno"
       content={
         <>
           <p>
-            Forniamo gruppi elettrogeni di varie potenze per garantire
-            l'alimentazione continua delle attrezzature di cantiere, anche in
-            assenza di rete elettrica.
-          </p>
-          <p>
-            I nostri generatori sono affidabili, silenziosi e conformi alle
-            normative ambientali vigenti, ideali per cantieri urbani ed extraurbani.
+            Disponiamo di gruppi elettrogeni di varie potenze, utili a garantire l'alimentazione continua delle
+            attrezzature di cantiere, anche in assenza di rete elettrica. Tutti i generatori sono conformi alle normative
+            vigenti.
           </p>
         </>
       }

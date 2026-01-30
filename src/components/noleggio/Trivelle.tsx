@@ -10,13 +10,9 @@ export function Trivelle() {
       content={
         <>
           <p>
-            Disponiamo di una flotta completa di trivelle per ogni tipo di esigenza,
-            dalle macchine compatte per lavori in spazi ristretti ai modelli di
-            grande potenza per perforazioni profonde.
-          </p>
-          <p>
-            Le nostre trivelle sono regolarmente manutenute e certificate, garantendo
-            massima efficienza e sicurezza operativa in ogni cantiere.
+            La nostra azienda è dotata di trivelle utili per la perforazione di pali di piccolo diametro, capaci di lavorare in
+            spazi anche ristretti, e macchine di grande potenza e portata utile per la perforazione di pali di grande
+            diametro e profondità.
           </p>
         </>
       }

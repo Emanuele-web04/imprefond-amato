@@ -10,12 +10,9 @@ export function Furgoni() {
       content={
         <>
           <p>
-            Offriamo il noleggio di furgoni da 35 quintali per il trasporto di
-            materiali, attrezzature e personale sul cantiere.
-          </p>
-          <p>
-            I nostri furgoni sono spaziosi, affidabili e perfetti per la logistica
-            quotidiana dei cantieri di medie e grandi dimensioni.
+            Offriamo il noleggio di furgoni di portata entro i 35 ql, adatti per il trasporto di materiale, attrezzature e
+            personale di cantiere. I ns. mezzi sono dotati di tutti i confort, sottoposti a continua manutenzione secondo
+            le normative di legge vigenti.
           </p>
         </>
       }

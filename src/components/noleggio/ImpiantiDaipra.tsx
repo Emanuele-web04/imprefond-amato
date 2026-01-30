@@ -10,14 +10,10 @@ export function ImpiantiDaipra() {
       content={
         <>
           <p>
-            Gli impianti Dai Prá sono sistemi di perforazione idraulici di alta
-            tecnologia, progettati per la realizzazione di micropali e ancoraggi
-            geotecnici.
-          </p>
-          <p>
-            Questi impianti garantiscono precisione millimetrica, versatilità
-            operativa e ridotti ingombri, perfetti per cantieri urbani e
-            interventi di consolidamento strutturale.
+            L'impianto Dai Prà è un sistema compatto specializzato nella miscelazione ed iniezione di boiacca
+            cementizia e bentonite utile per consolidamenti, micropali ed ancoraggi, indispensabile per cantieri ad alta
+            intensità, in quanto offre una gestione automatizzata ad alta velocità di rotazione, controllo preciso di
+            potenza.
           </p>
         </>
       }
