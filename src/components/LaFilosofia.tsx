@@ -5,7 +5,7 @@ import { SplitSection } from "./SplitSection";
 export function LaFilosofia() {
   return (
     <SplitSection
-      image="/pngs/4.jpg"
+      image="/foto tagliate/Milano cortina 2026/_DSC4961.jpg"
       imagePosition="left"
       title="La Filosofia"
       ctaText="Scopri di più sulla nostra storia"
