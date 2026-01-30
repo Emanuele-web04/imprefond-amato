@@ -19,7 +19,8 @@ import {
 interface TimelineEvent {
   year: string;
   title: string;
-  description: string;
+  description?: string;
+  showTitle?: boolean;
   image: string;
 }
 
@@ -223,12 +224,16 @@ export function Timeline() {
 
                 {/* Testo */}
                 <div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-medium text-black mb-1.5 sm:mb-2">
-                    {event.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm md:text-base text-gray-700 font-geist-sans leading-relaxed">
-                    {event.description}
-                  </p>
+                  {event.showTitle !== false && (
+                    <h3 className="text-base sm:text-lg md:text-xl font-medium text-black mb-1.5 sm:mb-2">
+                      {event.title}
+                    </h3>
+                  )}
+                  {event.description && (
+                    <p className="text-xs sm:text-sm md:text-base text-gray-700 font-geist-sans leading-relaxed">
+                      {event.description}
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -238,14 +243,14 @@ export function Timeline() {
 
       {/* Carousel Dialog for Contract Images */}
       <Dialog open={contractDialogOpen} onOpenChange={setContractDialogOpen}>
-        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden">
           <div className="relative w-full flex flex-col items-center justify-center">
             <Carousel className="w-full" opts={{ loop: true }}>
               <CarouselContent>
                 {contractImages.map((image, index) => (
                   <CarouselItem key={index}>
-                    <div className="flex items-center justify-center p-1 sm:p-2 md:p-4">
-                      <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center">
+                    <div className="flex items-center justify-center">
+                      <div className="h-[70vh] sm:h-[75vh] flex items-center justify-center">
                         <img
                           src={image}
                           alt={`Contratto Imprefond ${index + 1}`}
@@ -270,14 +275,14 @@ export function Timeline() {
         open={certificazioniDialogOpen}
         onOpenChange={setCertificazioniDialogOpen}
       >
-        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden">
           <div className="relative w-full flex flex-col items-center justify-center">
             <Carousel className="w-full" opts={{ loop: true }}>
               <CarouselContent>
                 {certificazioniImages.map((image, index) => (
                   <CarouselItem key={index}>
-                    <div className="flex items-center justify-center p-1 sm:p-2 md:p-4">
-                      <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center">
+                    <div className="flex items-center justify-center">
+                      <div className="h-[70vh] sm:h-[75vh] flex items-center justify-center">
                         <img
                           src={image}
                           alt={`Certificazione ${index + 1}`}
@@ -299,14 +304,14 @@ export function Timeline() {
 
       {/* Carousel Dialog for Tunnel Project Images */}
       <Dialog open={tunnelDialogOpen} onOpenChange={setTunnelDialogOpen}>
-        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
+        <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden">
           <div className="relative w-full flex flex-col items-center justify-center">
             <Carousel className="w-full" opts={{ loop: true }}>
               <CarouselContent>
                 {tunnelImages.map((image, index) => (
                   <CarouselItem key={index}>
-                    <div className="flex items-center justify-center p-1 sm:p-2 md:p-4">
-                      <div className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] flex items-center justify-center">
+                    <div className="flex items-center justify-center">
+                      <div className="h-[70vh] sm:h-[75vh] flex items-center justify-center">
                         <img
                           src={image}
                           alt={`Progetto Tunnel A26 ${index + 1}`}

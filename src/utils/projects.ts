@@ -27,9 +27,16 @@ export const trivellazioniImages = [
   "/foto tagliate/Milano cortina 2026/_DSC5001.jpg",
 ];
 
+// Tutte le immagini della cartella cortina-3-2025 per Cantieri vari
 export const cantieriImages = [
-  "/foto tagliate/Cantieri vari/13.jpg",
-  "/foto tagliate/Cantieri vari/2.jpg",
+  "/new-images/WhatsApp Image 2026-01-21 at 10.25.49 (1).jpeg",
+  "/new-images/WhatsApp Image 2026-01-21 at 10.25.49 (2).jpeg",
+  "/new-images/WhatsApp Image 2026-01-21 at 10.25.49.jpeg",
+  "/new-images/WhatsApp Image 2026-01-21 at 10.25.50 (2).jpeg",
+  "/new-images/WhatsApp Image 2026-01-21 at 10.25.50 (3).jpeg",
+  "/new-images/WhatsApp Image 2026-01-21 at 10.25.50.jpeg",
+  "/new-images/WhatsApp Image 2026-01-21 at 10.25.51.jpeg",
+  "/new-images/WhatsApp Image 2026-01-21 at 10.28.43.jpeg",
   "/foto tagliate/Cantieri vari/9.jpg",
 ];
 

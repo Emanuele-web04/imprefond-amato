@@ -22,7 +22,7 @@ export default function NoleggioPage() {
   return (
     <PageLayout
       title="Noleggio Attrezzature"
-      heroImage="/new-images/WhatsApp Image 2026-01-21 at 10.25.50.jpeg"
+      heroImage="/new-images/WhatsApp Image 2026-01-21 at 10.30.04.jpeg"
       breadcrumbItems={[{ label: "Noleggio" }]}
       navItems={noleggioNavItems}
       defaultActiveId="trivelle"

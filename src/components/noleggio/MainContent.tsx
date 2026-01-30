@@ -9,7 +9,6 @@ import { Furgoni } from "./Furgoni";
 import { MacchinePerforatrici } from "./MacchinePerforatrici";
 import { ScavatoriCPH } from "./ScavatoriCPH";
 import { Trasporto } from "./Trasporto";
-import { MaterialePerforazione } from "./MaterialePerforazione";
 import { ImpiantiDaipra } from "./ImpiantiDaipra";
 import { ImpiantiBunker } from "./ImpiantiBunker";
 
@@ -22,12 +21,12 @@ export function MainContent() {
       <TorreFari />
       <ManipolatoreCPH />
       <Escavatori />
-      <EscavatoreCPH />
+      {/* <EscavatoreCPH /> */}
       <Furgoni />
-      <MacchinePerforatrici />
-      <ScavatoriCPH />
+      {/* <MacchinePerforatrici /> */}
+      {/* <ScavatoriCPH /> */}
       <Trasporto />
-      <MaterialePerforazione />
+      {/* <MaterialePerforazione /> */}
       <ImpiantiDaipra />
       <ImpiantiBunker />
     </>

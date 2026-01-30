@@ -33,24 +33,31 @@ export function ChiSiamo() {
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
       >
         <p>
-          Fondata dai fratelli Carmine e Pasquale Amato, la ditta Imprefond F.lli Amato srl, si specializza nelle opere
-          di fondazioni speciali. Con l&apos;esperienza generazionale costruiamo fiducia attraverso competenza, sicurezza
-          ed affidabilità.
+          Fondata dai fratelli Carmine e Pasquale Amato, la ditta Imprefond
+          F.lli Amato srl, si specializza nelle opere di fondazioni speciali.
+          Con l&apos;esperienza generazionale costruiamo fiducia attraverso
+          competenza, sicurezza ed affidabilità.
         </p>
         <p>
-          La dedizione per il nostro lavoro, unita ad un focus sull&apos;innovazione, ci permette di garantire risultati
-          eccezionali in ogni progetto.
+          La dedizione per il nostro lavoro, unita ad un focus
+          sull&apos;innovazione, ci permette di garantire risultati eccezionali
+          in ogni progetto.
         </p>
         <p>
-          La nostra cultura aziendale si basa su valori solidi, come l&apos;integrità, la trasparenza nelle relazioni con
-          dipendenti, clienti e fornitori, crediamo nel lavoro di squadra che ci consente di raggiungere obiettivi
-          sempre più ambiziosi, Investendo costantemente in macchine ed attrezzature all&apos;avanguardia e nella
-          formazione dei nostri dipendenti, consapevoli che sono loro il vero motore del nostro successo.
+          La nostra cultura aziendale si basa su valori solidi, come
+          l&apos;integrità, la trasparenza nelle relazioni con dipendenti,
+          clienti e fornitori, crediamo nel lavoro di squadra che ci consente di
+          raggiungere obiettivi sempre più ambiziosi, Investendo costantemente
+          in macchine ed attrezzature all&apos;avanguardia e nella formazione
+          dei nostri dipendenti, consapevoli che sono loro il vero motore del
+          nostro successo.
         </p>
         <p>
-          La famiglia Amato inizia la propria attività nel settore delle trivellazioni nel 1921, stipulando il primo
-          contratto che segnerà l&apos;inizio della nostra storia nel settore delle fondazioni speciali, tramandando da
-          generazione in generazione l&apos;esperienza e la professionalità acquisita.
+          La famiglia Amato inizia la propria attività nel settore delle
+          trivellazioni nel 1921, stipulando il primo contratto che segnerà
+          l&apos;inizio della nostra storia nel settore delle fondazioni speciali,
+          tramandando da generazione in generazione l&apos;esperienza e la
+          professionalità acquisita.
         </p>
       </motion.div>
     </motion.div>

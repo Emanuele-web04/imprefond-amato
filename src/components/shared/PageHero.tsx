@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 interface PageHeroProps {
   title: string;
-  image: string;
+  image?: string | null;
   imagefit?: "cover" | "contain";
   mobileTitleCentered?: boolean;
 }
@@ -20,11 +20,13 @@ export function PageHero({
     <section className="relative h-screen w-full overflow-hidden">
       {/* Single Image Background */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={image}
-          alt={title}
-          className={`w-full h-full ${imagefit === "contain" ? "object-contain" : "object-cover"}`}
-        />
+        {image && (
+          <img
+            src={image}
+            alt={title}
+            className={`w-full h-full ${imagefit === "contain" ? "object-contain" : "object-cover"}`}
+          />
+        )}
         {/* Black overlay for text readability */}
         <div
           className={`absolute inset-0 md:bg-black/40 ${mobileTitleCentered ? "bg-black/30" : ""}`}

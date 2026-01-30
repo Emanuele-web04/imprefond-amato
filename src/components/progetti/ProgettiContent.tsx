@@ -39,7 +39,7 @@ export function ProgettiContent() {
         <ItalyMap />
       </div>
 
-      {/* Sezione Progetti - 3 card con carosello */}
+      {/* Sezione Progetti - 3 card con carosello - COMMENTED OUT FOR FUTURE USE
       <div id="progetti" className="mb-16 scroll-mt-24">
         <h2 className="text-section-title mb-6">I Nostri Progetti</h2>
         <p className="text-description mb-8">
@@ -47,6 +47,7 @@ export function ProgettiContent() {
         </p>
         <ProjectsGrid projects={projects} />
       </div>
+      */}
     </>
   );
 }

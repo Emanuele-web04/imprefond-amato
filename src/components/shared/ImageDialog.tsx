@@ -33,7 +33,7 @@ export function ImageDialog({
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-[98vw] sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] xl:max-w-7xl w-full p-2 sm:p-4 md:p-8 border-none bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl">
           <div className="relative w-full flex items-center justify-center">
-            <div className="w-full h-[85vh] sm:h-[80vh] md:h-[85vh] flex items-center justify-center">
+            <div className="w-full h-[85vh] sm:h-[80vh] md:h-85% flex items-center justify-center">
               <img
                 src={src}
                 alt={alt}

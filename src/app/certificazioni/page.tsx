@@ -12,7 +12,7 @@ export default function CertificazioniPage() {
   return (
     <PageLayout
       title="Certificazioni"
-      heroImage="/new-images/WhatsApp Image 2026-01-21 at 10.30.04.jpeg"
+      heroImage="/imprefond-logo.png"
       breadcrumbItems={[{ label: "Certificazioni" }]}
       navItems={certificazioniNavItems}
       defaultActiveId="soa"

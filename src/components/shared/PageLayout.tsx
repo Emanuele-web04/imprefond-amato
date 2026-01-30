@@ -9,7 +9,7 @@ import { motion } from "motion/react";
 
 interface PageLayoutProps {
   title: string;
-  heroImage: string;
+  heroImage?: string | null;
   breadcrumbItems?: { label: string; href?: string }[];
   navItems: NavItem[];
   defaultActiveId?: string;
