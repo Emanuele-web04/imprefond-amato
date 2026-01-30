@@ -94,6 +94,9 @@ export async function generateMetadata(): Promise<Metadata> {
         "Dal 1950, leader nelle fondazioni speciali: pali trivellati, micropali, palancole, jet grouting.",
       images: [`${baseUrl}/og-imprefond.png`],
     },
+    icons: {
+      icon: "/favicon.ico",
+    },
     robots: {
       index: true,
       follow: true,
