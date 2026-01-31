@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | Imprefond F.lli Amato",
     },
     description:
-      "Dal 1950, Imprefond F.lli Amato è leader nelle fondazioni speciali: pali trivellati, micropali, palancole, jet grouting. Affidabilità e competenza in tutta Italia.",
+      "Dal 1921, Imprefond F.lli Amato è specializzata in fondazioni speciali. Competenza generazionale, sicurezza e affidabilità nel settore delle trivellazioni da oltre 100 anni.",
     keywords: [
       // Brand & Identità
       "Imprefond Fratelli Amato",
