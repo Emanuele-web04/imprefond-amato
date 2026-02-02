@@ -9,6 +9,16 @@ import { CTAButton } from "./CTAButton";
 interface SplitSectionProps {
   image: string;
   imagePosition?: "left" | "right";
+  imageObjectPosition?:
+    | "top"
+    | "center"
+    | "bottom"
+    | "left"
+    | "right"
+    | "left-top"
+    | "left-bottom"
+    | "right-top"
+    | "right-bottom";
   title: string;
   content: React.ReactNode;
   ctaText?: string;
@@ -19,6 +29,7 @@ interface SplitSectionProps {
 export function SplitSection({
   image,
   imagePosition = "left",
+  imageObjectPosition = "top",
   title,
   content,
   ctaText,
@@ -30,6 +41,17 @@ export function SplitSection({
 
   const imageSide = imagePosition === "left" ? "left" : "right";
   const textSide = imagePosition === "left" ? "right" : "left";
+  const objectPositionClassMap = {
+    top: "object-top",
+    center: "object-center",
+    bottom: "object-bottom",
+    left: "object-left",
+    right: "object-right",
+    "left-top": "object-left-top",
+    "left-bottom": "object-left-bottom",
+    "right-top": "object-right-top",
+    "right-bottom": "object-right-bottom",
+  } as const;
 
   return (
     <section
@@ -45,7 +67,11 @@ export function SplitSection({
           imageSide === "left" ? "order-1 md:order-1" : "order-1 md:order-2"
         }`}
       >
-        <img src={image} alt={title} className="w-full object-top h-full object-cover" />
+        <img
+          src={image}
+          alt={title}
+          className={`w-full h-full object-cover ${objectPositionClassMap[imageObjectPosition]}`}
+        />
       </motion.div>
 
       {/* Contenuto Testuale */}

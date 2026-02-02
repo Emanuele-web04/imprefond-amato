@@ -7,6 +7,7 @@ export function LaFilosofia() {
     <SplitSection
       image="/cortina-3-2025/_DSC4961.jpg"
       imagePosition="left"
+      imageObjectPosition="bottom"
       title="La Filosofia"
       ctaText="Scopri di più sulla nostra storia"
       ctaLink="/storia"
