@@ -41,7 +41,7 @@ export function Timeline() {
 
   // Certificazioni images for the carousel (2010)
   const certificazioniImages = [
-    "/certificazioni-amato/att.7415 (3)-1.png",
+    "/certificazioni-amato/att.7963.png",
     "/certificazioni-amato/CERTIFICAT 171 OHS IMPREFOND-1.png",
     "/certificazioni-amato/ISO 9001 IMPREFOND (2)-1.png",
   ];

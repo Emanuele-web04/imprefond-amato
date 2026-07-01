@@ -34,8 +34,8 @@ export function AttestazioneSoa() {
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
       >
         <ImageDialog
-          src="/certificazioni-amato/att.7415 (3)-1.png"
-          alt="Attestazione SOA"
+          src="/certificazioni-amato/att.7963.png"
+          alt="Attestazione SOA n. 7963/69/07 - Categoria OS 21, Classifica III"
           className="w-full h-auto"
           containerClassName="w-full overflow-hidden rounded-lg shadow-lg bg-white"
         />
@@ -48,14 +48,16 @@ export function AttestazioneSoa() {
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
       >
         <p>
-          Imprefond F.lli Amato S.R.L. è certificata dall'organismo ARGENTASOA 
-          per l'attestazione di qualificazione all'esecuzione di lavori pubblici 
-          nella categoria OS 21, Classe I.
+          Imprefond F.lli Amato S.R.L. è certificata dall'organismo ARGENTASOA
+          per l'attestazione di qualificazione all'esecuzione di lavori pubblici
+          nella categoria OS 21, Classifica III.
         </p>
         <p>
-          L'attestazione n. 7415/69/07, rilasciata il 05/11/2025, è valida fino 
-          al 01/12/2027 e conferma la capacità dell'impresa di eseguire lavori 
-          pubblici nel settore delle fondazioni speciali e delle trivellazioni.
+          L'attestazione n. 7963/69/07, emessa il 26/05/2026 in sostituzione della
+          precedente n. 7415/69/07, ha validità fino al 04/11/2030 (con verifica
+          triennale entro il 04/11/2028) e conferma la capacità dell'impresa di
+          eseguire lavori pubblici nel settore delle fondazioni speciali e delle
+          trivellazioni.
         </p>
         <p>
           Questa certificazione rappresenta un riconoscimento della professionalità 
